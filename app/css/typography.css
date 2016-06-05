@@ -1,0 +1,25 @@
+body {
+    color: #333;
+    font-family: "Open Sans", sans-serif;
+}
+
+/* Code */
+
+code,
+pre {
+    font-size: 0.8em;
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+pre {
+    padding-left: 1em;
+    line-height: 1.4;
+}
+
+/* Lists */
+
+.list-unstyled {
+    padding-left: 0;
+    list-style: none;
+}
+

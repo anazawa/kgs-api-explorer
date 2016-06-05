@@ -1,0 +1,26 @@
+.form-control {
+    display: block;
+    width: 100%;
+    color: #555;
+}
+
+.form-group {
+    margin-bottom: 1em;
+}
+
+label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 0.4em;
+    font-weight: bold;
+}
+
+.btn {
+    margin-top: 0.4em;
+    margin-bottom: 0.4em;
+}
+
+.request-form {
+    padding-right: 2em;
+}
+

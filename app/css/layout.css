@@ -1,0 +1,23 @@
+.container {
+    padding: 1em;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+    max-height: 100%;
+}
+
+.column-left {
+    float: left;
+    width: 33%;
+}
+
+.column-right {
+    float: right;
+    width: 33%;
+}
+
+.column-center {
+    display: inline-block;
+    width: 33%;
+}
+
