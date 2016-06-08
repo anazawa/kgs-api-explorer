@@ -1,0 +1,18 @@
+<div class="form-group">
+  <label for="callbackKey">Callback key</label>
+  <input class="form-control" id="callbackKey" name="callbackKey"
+    type="number"
+    ng-model="message.callbackKey"
+    ng-init="message.callbackKey=0"
+    min="0"
+    required>
+</div>
+
+<div class="alert" ng-show="form.$submitted && form.callbackKey.$error.required">
+  Callback key can't be blank
+</div>
+
+<div class="alert" ng-show="form.$submitted && (form.callbackKey.$error.number || form.callbackKey.$error.min)">
+  Callback key must be an unsigned integer
+</div>
+

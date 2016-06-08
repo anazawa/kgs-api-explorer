@@ -24,41 +24,91 @@
 </head>
 <body>
   <div class="container">
-    <h1>KGS API Explorer</h1>
-    <div class="column-center" ng-controller="responseCtrl">
-      <h2>
-        <i class="fa fa-spinner fa-spin" ng-show="isPolling"></i>
-        Response
+
+    <div class="column-center" ng-controller="downstreamCtrl">
+      <h2 class="text-downstream">
+        <i class="fa fa-refresh" ng-class="{'fa-spin': isPolling}"></i>
+        Downstream
       </h2>
+      <div class="alert" ng-show="error">{{error}}</div>
+      <div class="form-group">
+        <label for="query" class="text-downstream">
+          <i class="fa fa-search"></i>
+          Search messages
+        </label>
+        <input id="query" class="form-control" type="text" ng-model="query">
+      </div>
       <ul class="list-unstyled history">
-        <div ng-repeat="message in messages track by $index">
-          <li><json-formatter open="1" json="message"></json-formatter></li>
-        </div>
+        <li ng-repeat="message in messages | filter: query track by $index">
+          <json-formatter open="1" json="message"></json-formatter>
+        </li>
       </ul>
-    </div>
-    <div class="column-left" ng-controller="requestCtrl">
-      <h2>Request</h2>
-      <form class="request-form" ng-submit="send()">
-        <div class="form-group">
-          <label for="type">Type</label>
-          <select id="type" class="form-control"
-            ng-options="type for type in types"
-            ng-model="message.type"></select>
+    </div><!-- /.column-center -->
+
+    <div class="column-left">
+      <header ng-controller="headerCtrl">
+        <h1>
+          KGS API Explorer<br>
+          <small>{{message}}</small>
+        </h1>
+        <ul>
+          <li><a href="http://www.gokgs.com/help/protocol.html">KGS Protocol</a></li>
+          <li><a href="http://metakgs.org/apps/json-client/protocol.html">API Documentation</a></li>
+          <li><a href="https://groups.google.com/forum/#!forum/kgs-client-coding">Mailing List</a></li>
+        </ul>
+      </header>
+      <div ng-controller="upstreamCtrl">
+        <h2 class="text-upstream">
+          <i class="fa fa-arrow-up"></i>
+          Upstream
+        </h2>
+        <div class="alert" ng-show="error">{{error}}</div>
+        <div class="preview">
+          <json-formatter open="1" json="message"></json-formatter>
         </div>
-        <ng-include src="'partials/'+message.type+'.html'"></ng-include>
-        <input class="btn" type="submit" value="Send" ng-disabled="isSending">
-      </form>
-      <h3><i class="fa fa-history"></i> History</h3>
-      <ul class="list-unstyled history">
-        <div ng-repeat="message in history track by $index">
-          <li><json-formatter open="1" json="message"></json-formatter></li>
+        <form name="form" ng-submit="send(form)" novalidate>
+          <div class="form-group">
+            <label for="type">Type</label>
+            <select id="type" class="form-control"
+              ng-options="type for type in types"
+              ng-model="message.type"></select>
+          </div>
+          <ng-include src="'partials/'+message.type+'.html'"></ng-include>
+          <input class="btn" type="submit" value="Send" ng-disabled="isSending">
+        </form>
+        <div ng-show="history.length" class="history">
+          <h3 class="text-upstream">
+            <i class="fa fa-history"></i>
+            History
+          </h3>
+          <ul class="list-unstyled history">
+            <li ng-repeat="message in history | filter: query track by $index">
+              <json-formatter open="1" json="message"></json-formatter>
+            </li>
+          </ul>
         </div>
-      </ul>
-    </div>
-    <div class="column-right" ng-controller="summaryCtrl">
-      <h2>Summary</h2>
-    </div>
-  </div>
+      </div>
+    </div><!-- /.column-left -->
+
+    <div class="column-right">
+      <div ng-controller="channelSubscriptionsCtrl">
+        <div ng-show="channels">
+          <h3 class="text-downstream">
+            Channel subscriptions
+          </h3>
+          <ul class="list-unstyled">
+            <li ng-repeat="(id, channel) in channels">
+              <span class="text-downstream-muted">
+                [{{channel.type | lowercase}}]
+              </span>
+              {{id}}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div><!-- /.column-right -->
+
+  </div><!-- /.container -->
 </body>
 </html>
 

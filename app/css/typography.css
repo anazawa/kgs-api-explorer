@@ -3,6 +3,23 @@ body {
     font-family: "Open Sans", sans-serif;
 }
 
+.text-downstream { color: #097054; }
+.text-upstream { color: #6599ff; }
+.text-foo { color: #ff9900; }
+.text-bar { color: #ffde00; }
+
+.text-muted { color: #777; }
+
+.text-downstream-muted { color: #0da67d; }
+
+/* Headings */
+
+h1 small,
+h2 small {
+    font-weight: normal;
+    color: #777;
+}
+
 /* Code */
 
 code,
@@ -18,8 +35,25 @@ pre {
 
 /* Lists */
 
+ul {
+    padding-left: 1.5em;
+}
+
 .list-unstyled {
     padding-left: 0;
     list-style: none;
+}
+
+/* Link */
+
+a {
+    color: #ff9900;
+    text-decoration: none;
+}
+
+a:hover,
+a:focus {
+    color: #cc6600;
+    text-decoration: underline;
 }
 

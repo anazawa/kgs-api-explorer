@@ -1,5 +1,5 @@
 .container {
-    padding: 1em;
+    padding: 1em 2em;
     -webkit-box-sizing: border-box;
        -moz-box-sizing: border-box;
             box-sizing: border-box;
@@ -8,16 +8,16 @@
 
 .column-left {
     float: left;
-    width: 33%;
+    width: 30%;
 }
 
 .column-right {
     float: right;
-    width: 33%;
+    width: 30%;
 }
 
 .column-center {
     display: inline-block;
-    width: 33%;
+    width: 40%;
 }
 

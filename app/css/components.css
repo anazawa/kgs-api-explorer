@@ -2,3 +2,21 @@
     margin-bottom: 1em;
 }
 
+.preview {
+    background-color: #dbe7ff;
+    padding: 0.5em;
+    margin-bottom: 1em;
+    margin-right: 1em;
+    border-radius: 0.5em;
+}
+
+.alert {
+    padding: 0.5em;
+    border-radius: 0.5em;
+    background-color: #fff7c4;
+    margin-bottom: 1em;
+    font-size: 0.9em;
+    margin-right: 1em;
+    color: #897800;
+}
+

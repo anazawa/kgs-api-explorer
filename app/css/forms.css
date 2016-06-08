@@ -1,26 +1,38 @@
+.form-group {
+    margin-bottom: 1em;
+    margin-right: 2em;
+}
+
 .form-control {
     display: block;
-    width: 100%;
     color: #555;
 }
 
-.form-group {
-    margin-bottom: 1em;
-}
-
-label {
+.form-group label {
     display: inline-block;
     max-width: 100%;
     margin-bottom: 0.4em;
     font-weight: bold;
 }
 
+.form-group input[type="text"],
+.form-group input[type="password"],
+.form-group input[type="number"],
+.form-group textarea {
+    width: 100%;
+    padding: 0.2em;
+}
+
+.form-error {
+    background-color: #f2dede;
+    padding: 0.5em;
+    margin-bottom: 1em;
+    margin-right: 2em;
+    border-radius: 0.5em;
+}
+
 .btn {
     margin-top: 0.4em;
     margin-bottom: 0.4em;
-}
-
-.request-form {
-    padding-right: 2em;
 }
 

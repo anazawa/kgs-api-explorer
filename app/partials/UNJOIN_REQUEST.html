@@ -1,0 +1,17 @@
+<div class="form-group">
+  <label for="channelId">Channel ID</label>
+  <input class="form-control" id="channelId" name="channelId"
+    type="number"
+    ng-model="message.channelId"
+    min="1"
+    required>
+</div>
+
+<div class="alert" ng-show="form.$submitted && form.channelId.$error.required">
+  Channel ID can't be blank
+</div>
+
+<div class="alert" ng-show="form.$submitted && (form.channelId.$error.number || form.channelId.$error.min)">
+  Channel ID must be an unsigned integer
+</div>
+
