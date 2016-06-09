@@ -1,13 +1,16 @@
 <div class="form-group">
   <label for="name">Name</label>
-  <input class="form-control" name="name"
+  <input
+    class="form-control"
+    name="name"
     type="text"
     ng-model="message.name"
-    ng-init="message.name=''"
     required>
 </div>
 
-<div class="alert" ng-show="form.$submitted && form.name.$error.required">
+<div
+  class="alert"
+  ng-show="form.$submitted && form.name.$error.required">
   Name can't be blank
 </div>
 

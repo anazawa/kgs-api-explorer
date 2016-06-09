@@ -1,24 +1,33 @@
 <div class="form-group">
   <label for="channelId">Channel ID</label>
-  <input class="form-control" id="channelId" name="channelId"
+  <input
+    class="form-control"
+    id="channelId"
+    name="channelId"
     type="number"
     ng-model="message.channelId"
-    min="1"
+    channel-id
     required>
 </div>
 
-<div class="alert" ng-show="form.$submitted && form.channelId.$error.required">
+<div
+  class="alert"
+  ng-show="form.$submitted && form.channelId.$error.required">
   Channel ID can't be blank
 </div>
 
-<div class="alert" ng-show="form.$submitted && (form.channelId.$error.number || form.channelId.$error.min)">
-  Channel ID must be an unsigned integer
+<div
+  class="alert"
+  ng-show="form.$submitted && (form.channelId.$error.number || form.channelId.$error.channelId)">
+  Channel ID must be a natural number
 </div>
 
 <div class="form-group">
   <label for="text">Text</label>
-  <textarea class="form-control" id="text" name="text"
-    ng-model="message.text"
-    ng-init="message.text=''"></textarea>
+  <textarea
+    class="form-control"
+    id="text"
+    name="text"
+    ng-model="message.text"></textarea>
 </div>
 

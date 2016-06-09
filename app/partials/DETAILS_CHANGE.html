@@ -1,0 +1,114 @@
+<div class="form-group">
+  <label for="channelId">Channel ID</label>
+  <input
+    class="form-control"
+    id="channelId"
+    name="channelId"
+    type="number"
+    ng-model="message.channelId"
+    channel-id
+    required>
+</div>
+
+<div
+  class="alert"
+  ng-show="form.$submitted && form.channelId.$error.required">
+  Channel ID can't be blank
+</div>
+
+<div class="form-group">
+  <label for="personal-name">Real name</label>
+  <input
+    class="form-control"
+    id="personal-name"
+    name="personalName"
+    type="text"
+    ng-model="message.personalName"
+    ng-maxlength="50">
+</div>
+
+<div
+  class="alert"
+  ng-show="form.$submitted && form.name.$error.maxLength">
+  Real name is too long (maximum is 50 characters)
+</div>
+
+<div class="form-group">
+  <label for="personal-email">Email</label>
+  <input
+    class="form-control"
+    id="personal-email"
+    name="personalEmail"
+    type="email"
+    ng-model="message.personalEmail"
+    ng-maxlength="70">
+</div>
+
+<div
+  class="alert"
+  ng-show="form.$submitted && form.personalEmail.$error.maxLength">
+  Email is too long (maximum is 50 characters)
+</div>
+
+<div
+  class="alert"
+  ng-show="form.$submitted && form.name.$error.email">
+  Email is invalid
+</div>
+
+<div class="form-group">
+  <label for="personal-info">Notes</label>
+  <textarea
+    class="form-control"
+    id="personal-info"
+    name="personalInfo"
+    ng-model="message.personalInfo"
+    ng-maxlength="1500"></textarea>
+</div>
+
+<div
+  class="alert"
+  ng-show="form.$submitted && form.personalInfo.$error.maxLength">
+  Notes are too long (maximum is 1500 characters)
+</div>
+
+<div class="form-group">
+  <label for="email-wanted">
+    <input
+      type="checkbox"
+      id="email-wanted"
+      class="form-control"
+      name="emailWanted"
+      ng-model="message.emailWanted">
+    Send me the KGS Plus schedule
+  </label>
+</div>
+
+<div class="form-group">
+  <label for="email-private">
+    <input
+      type="checkbox"
+      id="email-private"
+      class="form-control"
+      name="emailPrivate"
+      ng-model="message.emailPrivate">
+    Hide my email from other users
+  </label>
+</div>
+
+<div class="form-group">
+  <label for="auth-level">Auth Level</label>
+  <select
+    id="auth-level"
+    name="authLevel"
+    class="form-control"
+    ng-model="message.authLevel">
+    <option value="normal">normal</option>
+    <option value="robot_ranked">robot_ranked</option>
+    <option value="teacher">teacher</option>
+    <option value="jr_admin">jr_admin</option>
+    <option value="sr_admin">sr_admin</option>
+    <option value="super_admin">super_admin</option>
+  </select>
+</div>
+

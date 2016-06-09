@@ -1,0 +1,25 @@
+<div class="form-group">
+  <label for="rooms">Channel IDs</label>
+  <textarea
+    class="form-control"
+    id="rooms"
+    name="rooms"
+    ng-model="message.rooms"
+    ng-list="&#10;"
+    ng-trim="false"
+    channel-id-list
+    required></textarea>
+</div>
+
+<div
+  class="alert"
+  ng-show="form.$submitted && form.rooms.$error.required">
+  Channel IDs can't be blank
+</div>
+
+<div
+  class="alert"
+  ng-show="form.$submitted && form.rooms.$error.channelIdList">
+  Channel IDs must be natural numbers
+</div>
+

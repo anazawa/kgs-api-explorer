@@ -2,6 +2,10 @@
     margin-bottom: 1em;
 }
 
+.json-formatter-row .string {
+    white-space: pre-wrap;
+}
+
 .preview {
     background-color: #dbe7ff;
     padding: 0.5em;

@@ -64,14 +64,15 @@
         </h2>
         <div class="alert" ng-show="error">{{error}}</div>
         <div class="preview">
-          <json-formatter open="1" json="message"></json-formatter>
+          <json-formatter open="2" json="message"></json-formatter>
         </div>
         <form name="form" ng-submit="send(form)" novalidate>
           <div class="form-group">
             <label for="type">Type</label>
             <select id="type" class="form-control"
               ng-options="type for type in types"
-              ng-model="message.type"></select>
+              ng-model="message.type"
+              ng-change="reset(form)"></select>
           </div>
           <ng-include src="'partials/'+message.type+'.html'"></ng-include>
           <input class="btn" type="submit" value="Send" ng-disabled="isSending">
@@ -91,22 +92,32 @@
     </div><!-- /.column-left -->
 
     <div class="column-right">
+      <div ng-controller="aboutCtrl">
+        <div ng-show="serverVersion">
+          <h3 class="text-downstream">About</h3>
+          <dl>
+            <dt>Server version</dt>
+            <dd>{{serverVersion.toString()}}</dd>
+            <dt>Client build</dt>
+            <dd>{{clientBuild}}</dd>
+        </div>
+      </div>
       <div ng-controller="channelSubscriptionsCtrl">
         <div ng-show="channels">
           <h3 class="text-downstream">
             Channel subscriptions
           </h3>
           <ul class="list-unstyled">
-            <li ng-repeat="(id, channel) in channels">
+            <li ng-repeat="channel in channels | orderBy: ['type', 'id'] track by $index">
               <span class="text-downstream-muted">
                 [{{channel.type | lowercase}}]
               </span>
-              {{id}}
+              {{channel.id}}
             </li>
           </ul>
         </div>
       </div>
-    </div><!-- /.column-right -->
+   </div><!-- /.column-right -->
 
   </div><!-- /.container -->
 </body>
