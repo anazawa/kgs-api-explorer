@@ -38,8 +38,7 @@
     id="locale"
     class="form-control"
     name="locale"
-    ng-options="locale for locale in locales"
-    ng-model="message.locale"
-    ng-init="message.locale='en_US'"></select>
+    ng-options="lc.id as lc.language+' ('+lc.country+')' for lc in locales"
+    ng-model="message.locale"></select>
 </div>
  

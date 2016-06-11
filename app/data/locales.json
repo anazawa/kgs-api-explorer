@@ -1,26 +1,153 @@
 [
-    "bg_BG",
-    "ca_ES",
-    "cs_CZ",
-    "da_DK",
-    "de_DE",
-    "en_US",
-    "es_ES",
-    "eu_ES",
-    "fi_FI",
-    "fr_FR",
-    "hu_HU",
-    "it_IT",
-    "ja_JP",
-    "ko_KR",
-    "lv_LV",
-    "pl_PL",
-    "pt_BR",
-    "ro_RO",
-    "ru_RU",
-    "sk_SK",
-    "tr_TR",
-    "vi_VN",
-    "zh_CN"
+    {
+        "id": "en_US",
+        "language": "English",
+        "country": "United States"
+    },
+    {
+        "id": "bg_BG",
+        "language": "Bulgarian",
+        "country": "Bulgaria"
+    },
+    {
+        "id": "ca_ES",
+        "language": "Catalan",
+        "country": "Spain"
+    },
+    {
+        "id": "cs_CZ",
+        "language": "Czech",
+        "country": "Czech Republic"
+    },
+    {
+        "id": "da_DK",
+        "language": "Danish",
+        "country": "Denmark"
+    },
+    {
+        "id": "de_DE",
+        "language": "German",
+        "country": "Germany"
+    },
+    {
+        "id": "el_GR",
+        "language": "Greek",
+        "country": "Greece"
+    },
+    {
+        "id": "el_GR",
+        "language": "Greek",
+        "country": "Greece"
+    },
+    {
+        "id": "es_ES",
+        "language": "Spanish",
+        "country": "Spain"
+    },
+    {
+        "id": "eu_ES",
+        "language": "Basque",
+        "country": "Spain"
+    },
+    {
+        "id": "fi_FI",
+        "language": "Finnish",
+        "country": "Finland"
+    },
+    {
+        "id": "fr_FR",
+        "language": "French",
+        "country": "France"
+    },
+    {
+        "id": "hu_HU",
+        "language": "Hungarian",
+        "country": "Hungary"
+    },
+    {
+        "id": "it_IT",
+        "language": "Italian",
+        "country": "Italy"
+    },
+    {
+        "id": "iw_IL",
+        "language": "Hebrew",
+        "country": "Israel"
+    },
+    {
+        "id": "ja_JP",
+        "language": "Japanese",
+        "country": "Japan"
+    },
+    {
+        "id": "ko_KR",
+        "language": "Korean",
+        "country": "South Korea"
+    },
+    {
+        "id": "lv_LV",
+        "language": "Latvian",
+        "country": "Latvia"
+    },
+    {
+        "id": "lt_LT",
+        "language": "Lithuanian",
+        "country": "Lithuania"
+    },
+    {
+        "id": "pl_PL",
+        "language": "Polish",
+        "country": "Poland"
+    },
+    {
+        "id": "pt_BR",
+        "language": "Portuguese",
+        "country": "Brazil"
+    },
+    {
+        "id": "ro_RO",
+        "language": "Romanian",
+        "country": "Romania"
+    },
+    {
+        "id": "Russian",
+        "language": "Russia",
+        "country": "ru_RU"
+    },
+    {
+        "id": "sk_SK",
+        "language": "Slovak",
+        "country": "Slovakia"
+    },
+    {
+        "id": "sv_SE",
+        "language": "Swedish",
+        "country": "Sweden"
+    },
+    {
+        "id": "tr_TR",
+        "language": "Turkish",
+        "country": "Turkey"
+    },
+    {
+        "id": "uk_UA",
+        "language": "Ukrainian",
+        "country": "Ukraine"
+    },
+    {
+        "id": "vi_VN",
+        "language": "Vietnamese",
+        "country": "Vietnam"
+    },
+    {
+        "id": "zh_CN",
+        "language": "Chinese",
+        "country": "China"
+    },
+    {
+        "id": "zh_TW",
+        "language": "Chinese",
+        "country": "Taiwan"
+    }
 ]
 
