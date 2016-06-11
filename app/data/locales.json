@@ -35,11 +35,6 @@
         "country": "Greece"
     },
     {
-        "id": "el_GR",
-        "language": "Greek",
-        "country": "Greece"
-    },
-    {
         "id": "es_ES",
         "language": "Spanish",
         "country": "Spain"
@@ -110,9 +105,9 @@
         "country": "Romania"
     },
     {
-        "id": "Russian",
-        "language": "Russia",
-        "country": "ru_RU"
+        "id": "ru_RU",
+        "language": "Russian",
+        "country": "Russia"
     },
     {
         "id": "sk_SK",

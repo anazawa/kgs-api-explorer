@@ -26,50 +26,68 @@
   <div class="container">
 
     <div class="column-center" ng-controller="downstreamCtrl">
-      <h2 class="text-downstream">
-        <i class="fa fa-refresh" ng-class="{'fa-spin': isPolling}"></i>
-        Downstream
-      </h2>
-      <div class="alert" ng-show="error">{{error}}</div>
-      <div class="form-group">
-        <label for="query" class="text-downstream">
-          <i class="fa fa-search"></i>
-          Search messages
-        </label>
-        <input id="query" class="form-control" type="text" ng-model="query">
+      <header class="downstream-header">
+        <h2 class="text-downstream">
+          <i class="fa fa-refresh" ng-class="{'fa-spin': isPolling}"></i>
+          Downstream
+        </h2>
+        <div class="alert" ng-show="error">{{error}}</div>
+        <div class="form-group">
+          <label for="query" class="text-downstream">
+            <i class="fa fa-search"></i>
+            Search messages
+          </label>
+          <input id="query" class="form-control" type="text" ng-model="query">
+        </div>
+      </header>
+      <div class="downstream-messages">
+        <ul class="list-unstyled">
+          <li ng-repeat="message in messages | filter: query track by $index">
+            <json-formatter open="1" json="message"></json-formatter>
+          </li>
+        </ul>
       </div>
-      <ul class="list-unstyled history">
-        <li ng-repeat="message in messages | filter: query track by $index">
-          <json-formatter open="1" json="message"></json-formatter>
-        </li>
-      </ul>
     </div><!-- /.column-center -->
 
     <div class="column-left">
-      <header ng-controller="headerCtrl">
+      <header class="page-header" ng-controller="headerCtrl">
         <h1>
           KGS API Explorer<br>
           <small>{{message}}</small>
         </h1>
         <ul>
-          <li><a href="http://www.gokgs.com/help/protocol.html">KGS Protocol</a></li>
-          <li><a href="http://metakgs.org/apps/json-client/protocol.html">API Documentation</a></li>
-          <li><a href="https://groups.google.com/forum/#!forum/kgs-client-coding">Mailing List</a></li>
+          <li>
+            <a href="http://www.gokgs.com/help/protocol.html">
+              KGS Protocol
+            </a>
+          </li>
+          <li>
+            <a href="http://metakgs.org/apps/json-client/protocol.html">
+              API Documentation
+            </a>
+          </li>
+          <li>
+            <a href="https://groups.google.com/forum/#!forum/kgs-client-coding">
+              Mailing List
+            </a>
+          </li>
         </ul>
       </header>
-      <div ng-controller="upstreamCtrl">
+      <div class="upstream" ng-controller="upstreamCtrl">
         <h2 class="text-upstream">
           <i class="fa fa-arrow-up"></i>
           Upstream
         </h2>
         <div class="alert" ng-show="error">{{error}}</div>
-        <div class="preview">
+        <div class="upstream-message-preview">
           <json-formatter open="2" json="message"></json-formatter>
         </div>
         <form name="form" ng-submit="send(form)" novalidate>
           <div class="form-group">
             <label for="type">Type</label>
-            <select id="type" class="form-control"
+            <select
+              id="type"
+              class="form-control"
               ng-options="type for type in types"
               ng-model="message.type"
               ng-change="reset(form)"></select>
@@ -77,12 +95,12 @@
           <ng-include src="'partials/'+message.type+'.html'"></ng-include>
           <input class="btn" type="submit" value="Send" ng-disabled="isSending">
         </form>
-        <div ng-show="history.length" class="history">
+        <div class="upstream-messages">
           <h3 class="text-upstream">
             <i class="fa fa-history"></i>
             History
           </h3>
-          <ul class="list-unstyled history">
+          <ul class="list-unstyled" ng-show="history.length">
             <li ng-repeat="message in history | filter: query track by $index">
               <json-formatter open="1" json="message"></json-formatter>
             </li>
@@ -92,7 +110,7 @@
     </div><!-- /.column-left -->
 
     <div class="column-right">
-      <div ng-controller="aboutCtrl">
+      <div class="downstream-about" ng-controller="aboutCtrl">
         <div ng-show="serverVersion">
           <h3 class="text-downstream">About</h3>
           <dl>

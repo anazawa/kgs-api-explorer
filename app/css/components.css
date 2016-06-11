@@ -1,19 +1,3 @@
-.history li {
-    margin-bottom: 1em;
-}
-
-.json-formatter-row .string {
-    white-space: pre-wrap;
-}
-
-.preview {
-    background-color: #dbe7ff;
-    padding: 0.5em;
-    margin-bottom: 1em;
-    margin-right: 1em;
-    border-radius: 0.5em;
-}
-
 .alert {
     padding: 0.5em;
     border-radius: 0.5em;
@@ -22,5 +6,82 @@
     font-size: 0.9em;
     margin-right: 1em;
     color: #897800;
+}
+
+.page-header {
+    padding-top: 2em;
+    padding-left: 2em;
+}
+
+.page-header h1 {
+    margin-top: 0;
+}
+
+/* Upstream */
+
+.text-upstream {
+    color: #6599ff;
+}
+
+.upstream {
+    padding-left: 2em;
+    padding-bottom: 1em;
+}
+
+.upstream-message-preview {
+    background-color: #dbe7ff;
+    padding: 0.5em;
+    margin-bottom: 1em;
+    margin-right: 1em;
+    border-radius: 0.5em;
+}
+
+.upstream-messages {
+    padding-bottom: 1em;
+}
+
+.upstream-messages li {
+    margin-bottom: 1em;
+}
+
+/* Downstream */
+
+.text-downstream {
+    color: #097054;
+}
+
+.text-downstream-muted {
+    color: #0da67d;
+}
+
+.downstream-header {
+    padding-top: 2em;
+}
+
+.downstream-header h2 {
+    margin-top: 0;
+}
+
+.downstream-messages {
+    padding-bottom: 1em;
+}
+
+.downstream-messages li {
+    margin-bottom: 1em;
+}
+
+.downstream-about {
+    padding-top: 2em;
+    padding-right: 2em;
+}
+
+.downstream-about h3 {
+    margin-top: 0;
+}
+
+/* JSON Formatter */
+
+.json-formatter-row .string {
+    white-space: pre-wrap;
 }
 

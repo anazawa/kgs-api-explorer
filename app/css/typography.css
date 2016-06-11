@@ -3,14 +3,11 @@ body {
     font-family: "Open Sans", sans-serif;
 }
 
-.text-downstream { color: #097054; }
-.text-upstream { color: #6599ff; }
 .text-foo { color: #ff9900; }
 .text-bar { color: #ffde00; }
 
 .text-muted { color: #777; }
 
-.text-downstream-muted { color: #0da67d; }
 
 /* Headings */
 
