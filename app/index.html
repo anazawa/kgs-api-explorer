@@ -37,13 +37,17 @@
             <i class="fa fa-search"></i>
             Search messages
           </label>
-          <input id="query" class="form-control" type="text" ng-model="query">
+          <input
+            id="query"
+            class="form-control"
+            type="text"
+            ng-model="query">
         </div>
       </header>
       <div class="downstream-messages">
         <ul class="list-unstyled">
-          <li ng-repeat="message in messages | filter: parseQuery(query) track by $index">
-            <json-formatter open="1" json="message"></json-formatter>
+          <li ng-repeat="message in messages | filter: parseQuery(query) | orderBy: '-date' track by $index">
+            <json-formatter open="1" json="message.body"></json-formatter>
           </li>
         </ul>
       </div>
@@ -55,20 +59,27 @@
           KGS API Explorer<br>
           <small>{{message}}</small>
         </h1>
-        <ul>
+        <ul class="list-unstyled see-also">
           <li>
-            <a href="http://www.gokgs.com/help/protocol.html">
+            <a href="http://www.gokgs.com/help/protocol.html" target="_blank">
               KGS Protocol
             </a>
           </li>
           <li>
-            <a href="http://metakgs.org/apps/json-client/protocol.html">
+            <a href="http://metakgs.org/apps/json-client/protocol.html" target="_blank">
               API Documentation
             </a>
           </li>
           <li>
-            <a href="https://groups.google.com/forum/#!forum/kgs-client-coding">
+            <a href="https://groups.google.com/forum/#!forum/kgs-client-coding" target="_blank">
               Mailing List
+            </a>
+          </li>
+        </ul>
+        <ul class="list-unstyled actions">
+          <li>
+            <a href="#">
+              Export Messages
             </a>
           </li>
         </ul>
@@ -101,8 +112,8 @@
             History
           </h3>
           <ul class="list-unstyled" ng-show="history.length">
-            <li ng-repeat="message in history | filter: query track by $index">
-              <json-formatter open="1" json="message"></json-formatter>
+            <li ng-repeat="message in history | filter: query | orderBy: '-date' track by $index">
+              <json-formatter open="1" json="message.body"></json-formatter>
             </li>
           </ul>
         </div>
@@ -123,7 +134,7 @@
       <div ng-controller="channelSubscriptionsCtrl">
         <div ng-show="channels">
           <h3 class="text-downstream">
-            Channel subscriptions
+            Channel Subscriptions
           </h3>
           <ul class="list-unstyled">
             <li ng-repeat="channel in channels | orderBy: ['type', 'id'] track by $index">

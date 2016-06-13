@@ -50,16 +50,28 @@ ul {
     list-style: none;
 }
 
+.list-inline {
+    padding-left: 0;
+    list-style: none;
+    margin-left: -0.5em;
+}
+
+.list-inline li {
+    display: inline-block;
+    padding-right: 0.5em;
+    padding-left: 0.5em;
+}
+
 /* Link */
 
 a {
-    color: #ff9900;
+    color: #e68a00;
     text-decoration: none;
 }
 
 a:hover,
 a:focus {
-    color: #cc6600;
+    color: #b36b00;
     text-decoration: underline;
 }
 

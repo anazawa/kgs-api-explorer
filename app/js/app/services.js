@@ -7,6 +7,16 @@ factory("kgsPoller", function ($log, $rootScope, $q) {
         logger: $log
     });
 
+    that.upstreamMessages = function () {
+        this._upstreamMessages = this._upstreamMessages || [];
+        return this._upstreamMessages;
+    };
+
+    that.downstreamMessages = function () {
+        this._downstreamMessages = this._downstreamMessages || [];
+        return this._downstreamMessages;
+    };
+
     that.emit = (function (superEmit) {
         return function () {
             var ret = superEmit.apply(this, arguments);
@@ -17,12 +27,23 @@ factory("kgsPoller", function ($log, $rootScope, $q) {
 
     that.send = (function (superSend) {
         return function (message) {
+            this.upstreamMessages().push({
+                date: new Date(),
+                body: message
+            });
             var that = this;
             return $q(function (resolve, reject) {
                 superSend.call(that, message, resolve, reject);
             });
         };
     }(that.send));
+
+    that.on("message", function (message) {
+        this.downstreamMessages().push({
+            date: new Date(),
+            body: message
+        });
+    });
 
     return that;
 }).

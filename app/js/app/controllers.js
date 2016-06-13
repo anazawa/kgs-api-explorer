@@ -48,7 +48,9 @@ controller("upstreamCtrl", function ($scope, $http, kgsPoller) {
         });
     };
  
-    $scope.history = [];
+    //$scope.history = [];
+
+    $scope.history = kgsPoller.upstreamMessages();
     $scope.isSending = false;
     $scope.error = "";
 
@@ -65,7 +67,7 @@ controller("upstreamCtrl", function ($scope, $http, kgsPoller) {
             $scope.isSending = true;
             kgsPoller.send($scope.message).then(function () {
                 $scope.isSending = false;
-                $scope.history.unshift($scope.message);
+                //$scope.history.unshift($scope.message);
                 form.$setPristine();
                 form.$setUntouched();
                 if (kgsPoller.isLoggedIn()) {
@@ -99,15 +101,15 @@ controller("upstreamCtrl", function ($scope, $http, kgsPoller) {
     });
 }).
 controller("downstreamCtrl", function ($scope, kgsPoller, parseQuery) {
-    $scope.messages = [];
+    $scope.messages = kgsPoller.downstreamMessages();
     $scope.isPolling = false;
     $scope.error = "";
     $scope.parseQuery = parseQuery;
 
     kgsPoller.
-    on("message", function (message) {
-        $scope.messages.unshift(message);
-    }).
+    //on("message", function (message) {
+    //    $scope.messages.unshift(message);
+    //}).
     on("HELLO", function () {
         $scope.isPolling = true;
     }).
