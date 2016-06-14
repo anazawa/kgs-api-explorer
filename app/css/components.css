@@ -24,8 +24,20 @@
     margin-bottom: 0.5em;
 }
 
-.page-header .actions {
+.page-header .action-list {
     margin-top: 0.5em;
+}
+
+.page-header .action {
+    cursor: pointer;
+    color: #e68a00;
+    text-decoration: none;
+}
+
+.page-header .action:hover,
+.page-header .action:focus {
+    color: #b36b00;
+    text-decoration: underline;
 }
 
 /* Upstream */
@@ -81,12 +93,12 @@
     margin-bottom: 1em;
 }
 
-.downstream-about {
+.downstream-channels {
     padding-top: 2em;
     padding-right: 2em;
 }
 
-.downstream-about h3 {
+.downstream-channels h3 {
     margin-top: 0;
 }
 

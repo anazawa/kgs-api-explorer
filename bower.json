@@ -10,6 +10,7 @@
     "normalize.css": "3.0.3",
     "font-awesome": "~4.6.3",
     "json-formatter": "~0.6.0",
-    "kgspoller": "https://github.com/anazawa/kgspoller.git"
+    "kgspoller": "https://github.com/anazawa/kgspoller.git",
+    "file-saver": "*"
   }
 }

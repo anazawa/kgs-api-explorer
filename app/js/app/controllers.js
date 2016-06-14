@@ -4,13 +4,23 @@ angular.module("kgsApiExplorer.controllers", [
     "kgsApiExplorer.directives",
     "kgsApiExplorer.services" 
 ]).
-controller("headerCtrl", function ($scope) {
+controller("headerCtrl", function ($scope, kgsPoller) {
     var messages = [
         "for testing!",
         "for developing!",
         "for fun!"
     ];
     $scope.message = messages[Math.floor(Math.random()*messages.length)];
+    $scope.blobIsAvailable = typeof Blob === "function";
+    $scope.exportMessages = function () {
+        saveAs(
+            new Blob(
+                [kgsPoller.toString(null, 4)],
+                { type: "application/json" }
+            ),
+            "messages.json"
+        );
+    };
 }).
 controller("upstreamCtrl", function ($scope, $http, kgsPoller) {
     var DEFAULTS = {
@@ -122,7 +132,7 @@ controller("downstreamCtrl", function ($scope, kgsPoller, parseQuery) {
         }
     });
 }).
-controller("channelSubscriptionsCtrl", function ($scope, kgsPoller) {
+controller("channelsCtrl", function ($scope, kgsPoller) {
     kgsPoller.
     on("LOGIN_SUCCESS", function () {
         $scope.channels = [];
@@ -143,24 +153,6 @@ controller("channelSubscriptionsCtrl", function ($scope, kgsPoller) {
     }).
     on("LOGOUT", function () {
         $scope.channels = null;
-    });
-}).
-controller("aboutCtrl", function ($scope, kgsPoller) {
-    kgsPoller.
-    on("HELLO", function (message) {
-        $scope.serverVersion = {
-            major: message.versionMajor,
-            minor: message.versionMinor,
-            bugfix: message.versionBugfix,
-            toString: function () {
-                return this.major+"."+this.minor+"."+this.bugfix;
-            }
-        };
-        $scope.clientBuild = message.jsonClientBuild;
-    }).
-    on("LOGOUT", function () {
-        $scope.serverVersion = null;
-        $scope.clientBuild = null;
     });
 });
 
