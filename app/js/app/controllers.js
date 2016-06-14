@@ -110,11 +110,10 @@ controller("upstreamCtrl", function ($scope, $http, kgsPoller) {
         reset(["LOGIN"]);
     });
 }).
-controller("downstreamCtrl", function ($scope, kgsPoller, parseQuery) {
+controller("downstreamCtrl", function ($scope, kgsPoller) {
     $scope.messages = kgsPoller.downstreamMessages();
     $scope.isPolling = false;
     $scope.error = "";
-    $scope.parseQuery = parseQuery;
 
     kgsPoller.
     //on("message", function (message) {
