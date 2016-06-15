@@ -13,51 +13,33 @@ controller("headerCtrl", function ($scope, kgsPoller) {
     $scope.message = messages[Math.floor(Math.random()*messages.length)];
 }).
 controller("upstreamCtrl", function ($scope, $http, kgsPoller) {
-    var DEFAULTS = {
-        CHAT: {
-            type: "CHAT",
-            text: ""
-        },
-        DETAILS_CHANGE: {
-            type: "DETAILS_CHANGE",
-            personalName: "",
-            personalEmail: "",
-            personalInfo: "",
-            authLevel: "normal"
-        },
-        LOGIN: {
-            type: "LOGIN",
-            locale: "en_US"
-        },
-        ROOM_NAMES_REQUEST: {
-            type: "ROOM_NAMES_REQUEST",
-            rooms: []
-        }
+    var DEFAULT_MESSAGES = {};
+    var reset = function (availableTypes, type) {
+        availableTypes = availableTypes || $scope.availableTypes;
+        type = type || availableTypes[0];
+        $scope.availableTypes = availableTypes;
+        $scope.message = angular.copy(DEFAULT_MESSAGES[type]);
     };
+
+    $http.get("data/default-messages.json").then(function (response) {
+        response.data.forEach(function (message) {
+            DEFAULT_MESSAGES[message.type] = message;
+        });
+        reset(["LOGIN"]);
+    });
 
     $http.get("data/locales.json").then(function (response) {
         $scope.locales = response.data;
     });
 
-    var reset = function (types, type) {
-        types = types || $scope.types;
-        type = type || types[0];
-        $scope.types = types;
-        $scope.message = angular.copy(DEFAULTS[type] || {
-            type: type
-        });
-    };
-
     $scope.history = kgsPoller.upstreamMessages();
     $scope.isSending = false;
     $scope.error = "";
 
-    reset(["LOGIN"]);
-
     $scope.reset = function (form) {
         form.$setPristine();
         form.$setUntouched();
-        reset($scope.types, $scope.message.type);
+        reset($scope.availableTypes, $scope.message.type);
     };
 
     $scope.send = function (form) {

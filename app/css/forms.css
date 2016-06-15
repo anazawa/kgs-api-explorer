@@ -1,11 +1,5 @@
 .form-group {
-    margin-bottom: 1em;
     margin-right: 2em;
-}
-
-.form-control {
-    display: block;
-    color: #555;
 }
 
 .form-group label {
@@ -15,17 +9,28 @@
     font-weight: bold;
 }
 
-.form-group label input[type="checkbox"] {
+.form-control {
+    display: block;
+    color: #555;
+}
+
+input[type="text"].form-control,
+input[type="password"].form-control,
+input[type="number"].form-control,
+input[type="email"].form-control,
+textarea.form-control {
+    width: 100%;
+    padding: 0.2em;
+    margin-bottom: 1em;
+}
+
+input[type="checkbox"].form-control {
+    margin-bottom: 0.6em;
     display: inline-block;
 }
 
-.form-group input[type="text"],
-.form-group input[type="password"],
-.form-group input[type="number"],
-.form-group input[type="email"],
-.form-group textarea {
-    width: 100%;
-    padding: 0.2em;
+select.form-control {
+    margin-bottom: 1em;
 }
 
 .form-error {

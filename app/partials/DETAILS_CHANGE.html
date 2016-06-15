@@ -16,6 +16,12 @@
   Channel ID can't be blank
 </div>
 
+<div
+  class="alert"
+  ng-show="form.$submitted && (form.channelId.$error.number || form.channelId.$error.channelId)">
+  Channel ID must be a natural number
+</div>
+
 <div class="form-group">
   <label for="personal-name">Real name</label>
   <input

@@ -1,0 +1,61 @@
+[
+    {
+        "type": "AVATAR_REQUEST",
+        "name": ""
+    },
+    {
+        "type": "CHAT",
+        "channelId": 0,
+        "text": ""
+    },
+    {
+        "type": "DETAILS_CHANGE",
+        "channelId": 0,
+        "personalName": "",
+        "personalEmail": "",
+        "personalInfo": "",
+        "emailWanted": false,
+        "emailPrivate": false,
+        "authLevel": "normal"
+    },
+    {
+        "type": "DETAILS_JOIN_REQUEST",
+        "name": ""
+    },
+    {
+        "type": "JOIN_ARCHIVE_REQUEST",
+        "name": ""
+    },
+    {
+        "type": "JOIN_TAG_ARCHIVE_REQUEST",
+        "name": ""
+    },
+    {
+        "type": "LOGIN",
+        "name": "",
+        "password": "",
+        "locale": "en_US"
+    },
+    {
+        "type": "LOGOUT"
+    },
+    {
+        "type": "REQUEST_SERVER_STATS"
+    },
+    {
+        "type": "ROOM_NAMES_REQUEST",
+        "rooms": []
+    },
+    {
+        "type": "SYNC_REQUEST",
+        "callbackKey": 0
+    },
+    {
+        "type": "UNJOIN_REQUEST",
+        "channelId": 0
+    },
+    {
+        "type": "WAKE_UP"
+    }
+]
+
