@@ -119,7 +119,7 @@ controller("channelsCtrl", function ($scope, kgsPoller) {
         $scope.channels = null;
     });
 }).
-controller("exportCtrl", function ($scope, kgsPoller) {
+controller("exporterCtrl", function ($scope, kgsPoller) {
     $scope.isAvailable = typeof Blob === "function";
     $scope.hidePassword = true;
     $scope.indent = "4";
