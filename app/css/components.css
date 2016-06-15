@@ -18,28 +18,6 @@
     margin-top: 0;
 }
 
-.page-header .see-also {
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 0.5em;
-    margin-bottom: 0.5em;
-}
-
-.page-header .action-list {
-    margin-top: 0.5em;
-}
-
-.page-header .action {
-    cursor: pointer;
-    color: #e68a00;
-    text-decoration: none;
-}
-
-.page-header .action:hover,
-.page-header .action:focus {
-    color: #b36b00;
-    text-decoration: underline;
-}
-
 /* Upstream */
 
 .text-upstream {
@@ -100,6 +78,10 @@
 
 .downstream-channels h3 {
     margin-top: 0;
+}
+
+.export {
+    padding-right: 2em;
 }
 
 /* JSON Formatter */

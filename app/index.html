@@ -69,13 +69,6 @@
             </a>
           </li>
         </ul>
-        <ul class="list-unstyled action-list">
-          <li ng-show"blobIsAvailable">
-            <span class="action" ng-click="exportMessages()">
-              Export Messages
-            </span>
-          </li>
-        </ul>
       </header>
       <div class="upstream" ng-controller="upstreamCtrl">
         <h2 class="text-upstream">
@@ -115,26 +108,61 @@
 
     <div class="column-right">
       <div class="downstream-channels" ng-controller="channelsCtrl">
-        <div ng-show="channels">
-          <h3 class="text-downstream">
-            Channels
-          </h3>
-          <ul class="list-unstyled">
-            <li ng-repeat="channel in channels | orderBy: ['type', 'id'] track by $index">
-              <span class="text-downstream-muted">
-                [{{channel.type | lowercase}}]
-              </span>
-              {{channel.id}}
-            </li>
-          </ul>
+        <h3 class="text-downstream">
+          Channels
+        </h3>
+        <ul class="list-unstyled">
+          <li ng-repeat="channel in channels | orderBy: ['type', 'id'] track by $index">
+            <span class="text-downstream-muted">
+              [{{channel.type | lowercase}}]
+            </span>
+            {{channel.id}}
+          </li>
+        </ul>
+      </div>
+      <div class="export" ng-controller="exportCtrl">
+        <div ng-show="isAvailable">
+          <h2>
+            Export Messages
+          </h2>
+          <p>
+            Generates a JSON file that includes upstream/downstream messages,
+            the API endpoint and errors caught while communicating with the KGS
+            go server. Helps you report a bug or read KGS messages offline.
+          </p>
+          <form ng-submit="export()">
+            <div class="form-group">
+              <label for="indent">Indent</label>
+              <select
+                id="indent"
+                class="form-control"
+                ng-model="indent">
+                <option value="tab">Tab</option>
+                <option value="2">2 spaces</option>
+                <option value="4">4 spaces</option>
+                <option value="8">8 spaces</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="hide-password">
+                <input
+                  type="checkbox"
+                  id="hide-password"
+                  class="form-control"
+                  ng-model="hidePassword">
+                Hide password
+              </label>
+            </div>
+            <input class="btn" type="submit" value="Export">
+          </form>
         </div>
       </div>
    </div><!-- /.column-right -->
 
   </div><!-- /.container -->
 
-  <script src="bower_components/kgspoller/index.js"></script>
   <script src="bower_components/file-saver/FileSaver.js"></script>
+  <script src="bower_components/kgspoller/index.js"></script>
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/json-formatter/dist/json-formatter.js"></script>
   <script src="js/app.js"></script>

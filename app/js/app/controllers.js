@@ -11,16 +11,6 @@ controller("headerCtrl", function ($scope, kgsPoller) {
         "for fun!"
     ];
     $scope.message = messages[Math.floor(Math.random()*messages.length)];
-    $scope.blobIsAvailable = typeof Blob === "function";
-    $scope.exportMessages = function () {
-        saveAs(
-            new Blob(
-                [kgsPoller.toString(null, 4)],
-                { type: "application/json" }
-            ),
-            "messages.json"
-        );
-    };
 }).
 controller("upstreamCtrl", function ($scope, $http, kgsPoller) {
     var DEFAULTS = {
@@ -57,8 +47,6 @@ controller("upstreamCtrl", function ($scope, $http, kgsPoller) {
             type: type
         });
     };
- 
-    //$scope.history = [];
 
     $scope.history = kgsPoller.upstreamMessages();
     $scope.isSending = false;
@@ -77,7 +65,6 @@ controller("upstreamCtrl", function ($scope, $http, kgsPoller) {
             $scope.isSending = true;
             kgsPoller.send($scope.message).then(function () {
                 $scope.isSending = false;
-                //$scope.history.unshift($scope.message);
                 form.$setPristine();
                 form.$setUntouched();
                 if (kgsPoller.isLoggedIn()) {
@@ -116,9 +103,6 @@ controller("downstreamCtrl", function ($scope, kgsPoller) {
     $scope.error = "";
 
     kgsPoller.
-    //on("message", function (message) {
-    //    $scope.messages.unshift(message);
-    //}).
     on("HELLO", function () {
         $scope.isPolling = true;
     }).
@@ -145,13 +129,31 @@ controller("channelsCtrl", function ($scope, kgsPoller) {
         }
     }).
     on("UNJOIN", function (message) {
-        var index = $scope.channels.findIndex(function (channel) {
+        $scope.channels.splice($scope.channels.findIndex(function (channel) {
             return channel.id === message.channelId;
-        });
-        $scope.channels.splice(index, 1);
+        }), 1);
     }).
     on("LOGOUT", function () {
         $scope.channels = null;
     });
+}).
+controller("exportCtrl", function ($scope, kgsPoller) {
+    $scope.isAvailable = typeof Blob === "function";
+    $scope.hidePassword = true;
+    $scope.indent = "4";
+    $scope.export = function () {
+        saveAs(
+            new Blob(
+                [kgsPoller.toString(
+                    !$scope.hidePassword ? null : function (key, value) {
+                        return key === "password" ? "" : value;
+                    },
+                    $scope.indent === "tab" ? "\t" : parseInt($scope.indent, 0)
+                )],
+                { type: "application/json" }
+            ),
+            "kgs-messages.json"
+        );
+    };
 });
 
