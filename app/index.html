@@ -129,9 +129,10 @@
             Export Messages
           </h2>
           <p>
-            Generates a JSON file that includes upstream/downstream messages,
-            the API endpoint and errors caught while communicating with the KGS
-            go server. Helps you report a bug or read KGS messages offline.
+            Generates a JSON file that includes the API endpoint,
+            upstream/downstream messages and errors caught while communicating
+            with the KGS go server. Helps you report a bug or read KGS messages
+            later.
           </p>
           <form ng-submit="export()">
             <div class="form-group">
@@ -141,9 +142,15 @@
                 class="form-control"
                 ng-model="indent">
                 <option value="tab">Tab</option>
+                <option value="1">1 spaces</option>
                 <option value="2">2 spaces</option>
+                <option value="3">3 spaces</option>
                 <option value="4">4 spaces</option>
+                <option value="5">5 spaces</option>
+                <option value="6">6 spaces</option>
+                <option value="7">7 spaces</option>
                 <option value="8">8 spaces</option>
+                <option value="0">None</option>
               </select>
             </div>
             <div class="form-group">
@@ -169,9 +176,10 @@
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/json-formatter/dist/json-formatter.js"></script>
   <script src="js/app.js"></script>
-  <script src="js/app/controllers.js"></script>
+  <script src="js/app/filters.js"></script>
   <script src="js/app/services.js"></script>
   <script src="js/app/directives.js"></script>
+  <script src="js/app/controllers.js"></script>
 </body>
 </html>
 

@@ -1,6 +1,7 @@
 "use strict";
 
 angular.module("kgsApiExplorer.controllers", [
+    "kgsApiExplorer.filters",
     "kgsApiExplorer.directives",
     "kgsApiExplorer.services" 
 ]).
@@ -13,17 +14,26 @@ controller("headerCtrl", function ($scope, kgsPoller) {
     $scope.message = messages[Math.floor(Math.random()*messages.length)];
 }).
 controller("upstreamCtrl", function ($scope, $http, kgsPoller) {
-    var DEFAULT_MESSAGES = {};
+    $scope.DEFAULT_MESSAGES = {};
+    $scope.AUTH_LEVELS = {
+        normal: 1,
+        robot_ranked: 2,
+        teacher: 3,
+        jr_admin: 10,
+        sr_admin: 11,
+        super_admin: 12
+    };
+
     var reset = function (availableTypes, type) {
         availableTypes = availableTypes || $scope.availableTypes;
         type = type || availableTypes[0];
         $scope.availableTypes = availableTypes;
-        $scope.message = angular.copy(DEFAULT_MESSAGES[type]);
+        $scope.message = angular.copy($scope.DEFAULT_MESSAGES[type]);
     };
 
     $http.get("data/default-messages.json").then(function (response) {
         response.data.forEach(function (message) {
-            DEFAULT_MESSAGES[message.type] = message;
+            $scope.DEFAULT_MESSAGES[message.type] = message;
         });
         reset(["LOGIN"]);
     });
@@ -35,6 +45,7 @@ controller("upstreamCtrl", function ($scope, $http, kgsPoller) {
     $scope.history = kgsPoller.upstreamMessages();
     $scope.isSending = false;
     $scope.error = "";
+    $scope.authLevel = null;
 
     $scope.reset = function (form) {
         form.$setPristine();
@@ -59,21 +70,12 @@ controller("upstreamCtrl", function ($scope, $http, kgsPoller) {
     };
 
     kgsPoller.
-    on("LOGIN_SUCCESS", function () {
-        reset([
-            "AVATAR_REQUEST",
-            "CHAT",
-            "DETAILS_CHANGE",
-            "DETAILS_JOIN_REQUEST",
-            "JOIN_ARCHIVE_REQUEST",
-            "JOIN_TAG_ARCHIVE_REQUEST",
-            "LOGOUT",
-            "REQUEST_SERVER_STATS",
-            "ROOM_NAMES_REQUEST",
-            "SYNC_REQUEST",
-            "UNJOIN_REQUEST",
-            "WAKE_UP"
-        ]);
+    on("LOGIN_SUCCESS", function (message) {
+        $scope.authLevelString = message.you.authLevel || "normal";
+        $scope.authLevel = $scope.AUTH_LEVELS[$scope.authLevelString];
+        reset(Object.keys($scope.DEFAULT_MESSAGES).filter(function (key) {
+            return key !== "LOGIN";
+        }));
     }).
     on("LOGOUT", function () {
         reset(["LOGIN"]);

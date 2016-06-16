@@ -4,7 +4,8 @@ angular.module("kgsApiExplorer.services", [
 ]).
 factory("kgsPoller", function ($log, $rootScope, $q) {
     var that = kgsPoller({
-        logger: $log
+        logger: $log,
+        url: "http://metakgs.org/api/access-201606062314"
     });
 
     that.upstreamMessages = function () {

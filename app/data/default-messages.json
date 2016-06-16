@@ -23,8 +23,16 @@
         "name": ""
     },
     {
+        "type": "DETAILS_RANK_GRAPH_REQUEST",
+        "channelId": 0
+    },
+    {
         "type": "JOIN_ARCHIVE_REQUEST",
         "name": ""
+    },
+    {
+        "type": "JOIN_REQUEST",
+        "channelId": 0
     },
     {
         "type": "JOIN_TAG_ARCHIVE_REQUEST",
@@ -43,8 +51,28 @@
         "type": "REQUEST_SERVER_STATS"
     },
     {
+        "type": "ROOM_EDIT",
+        "callbackKey": 0,
+        "name": "",
+        "description": "",
+        "category": "TEMPORARY",
+        "locale": "",
+        "private": false,
+        "tournOnly": false,
+        "globalOnly": false
+    },
+    {
+        "type": "ROOM_DESC_REQUEST",
+        "channelId": 0
+    },
+    {
         "type": "ROOM_NAMES_REQUEST",
         "rooms": []
+    },
+    {
+        "type": "SET_PASSWORD",
+        "name": "",
+        "password": ""
     },
     {
         "type": "SYNC_REQUEST",
