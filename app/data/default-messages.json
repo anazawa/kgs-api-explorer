@@ -9,6 +9,17 @@
         "text": ""
     },
     {
+        "type": "CREATE_ROOM_REQUEST",
+        "callbackKey": 0,
+        "name": "",
+        "description": "",
+        "category": "TEMPORARY",
+        "locale": "",
+        "private": false,
+        "tournOnly": false,
+        "globalOnly": false
+    },
+    {
         "type": "DETAILS_CHANGE",
         "channelId": 0,
         "personalName": "",
@@ -52,7 +63,6 @@
     },
     {
         "type": "ROOM_EDIT",
-        "callbackKey": 0,
         "name": "",
         "description": "",
         "category": "TEMPORARY",
