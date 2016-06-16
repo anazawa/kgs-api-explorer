@@ -89,7 +89,7 @@
               ng-model="message.type"
               ng-change="reset(form)"></select>
           </div>
-          <ng-include ng-if="message" src="'partials/'+message.type+'.html'"></ng-include>
+          <ng-include ng-if="message" src="'partials/messages/'+message.type+'.html'"></ng-include>
           <input class="btn" type="submit" value="Send" ng-disabled="isSending">
         </form>
         <div class="upstream-messages">

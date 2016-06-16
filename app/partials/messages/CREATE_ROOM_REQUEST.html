@@ -1,26 +1,4 @@
-<div class="form-group">
-  <label for="callbackKey">Callback key</label>
-  <input
-    class="form-control"
-    id="callbackKey"
-    name="callbackKey"
-    type="number"
-    ng-model="message.callbackKey"
-    callback-key
-    required>
-</div>
-
-<div
-  class="alert"
-  ng-show="form.$submitted && form.callbackKey.$error.required">
-  Callback key can't be blank
-</div>
-
-<div
-  class="alert"
-  ng-show="form.$submitted && (form.callbackKey.$error.number || form.callbackKey.$error.callbackKey)">
-  Callback key must be an unsigned integer
-</div>
+<ng-include src="'partials/messages/fields/callback-key.html'"></ng-include>
 
 <div class="form-group">
   <label for="name">Name</label>
