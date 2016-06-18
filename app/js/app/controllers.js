@@ -40,6 +40,7 @@ controller("upstreamCtrl", function ($scope, $http, kgsPoller) {
 
     $http.get("data/locales.json").then(function (response) {
         $scope.locales = response.data;
+        $scope.LOCALES = response.data;
     });
 
     $scope.history = kgsPoller.upstreamMessages();

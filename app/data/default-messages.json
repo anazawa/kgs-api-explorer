@@ -1,12 +1,47 @@
 [
     {
+        "type": "ACCESS_LIST_REQUEST",
+        "channelId": 0
+    },
+    {
+        "type": "AUTOMATCH_CANCEL"
+    },
+    {
         "type": "AVATAR_REQUEST",
+        "name": ""
+    },
+    {
+        "type": "CHALLENGE_DECLINE",
+        "channelId": 0,
+        "name": ""
+    },
+    {
+        "type": "CHALLENGE_RETRY",
+        "channelId": 0
+    },
+    {
+        "type": "CHANNEL_ADD_ACCESS",
+        "channelId": 0,
+        "name": ""
+    },
+    {
+        "type": "CHANNEL_REMOVE_ACCESS",
+        "channelId": 0,
         "name": ""
     },
     {
         "type": "CHAT",
         "channelId": 0,
         "text": ""
+    },
+    {
+        "type": "CONVO_NO_CHATS",
+        "channelId": 0
+    },
+    {
+        "type": "CONVO_REQUEST",
+        "callbackKey": 0,
+        "name": ""
     },
     {
         "type": "CREATE_ROOM_REQUEST",
@@ -38,6 +73,37 @@
         "channelId": 0
     },
     {
+        "type": "FETCH_TAGS"
+    },
+    {
+        "type": "GAME_RESIGN",
+        "channelId": 0
+    },
+    {
+        "type": "GAME_START_REVIEW",
+        "channelId": 0
+    },
+    {
+        "type": "GAME_TIME_ADD",
+        "role": "black",
+        "time": 0
+    },
+    {
+        "type": "GAME_UNDO_ACCEPT",
+        "channelId": 0
+    },
+    {
+        "type": "GAME_UNDO_REQUEST",
+        "channelId": 0
+    },
+    {
+        "type": "GLOBAL_LIST_JOIN_REQUEST",
+        "list": "CHALLENGES"
+    },
+    {
+        "type": "IDLE_ON"
+    },
+    {
         "type": "JOIN_ARCHIVE_REQUEST",
         "name": ""
     },
@@ -59,7 +125,27 @@
         "type": "LOGOUT"
     },
     {
+        "type": "MESSAGE_CREATE",
+        "callbackKey": 0,
+        "name": "",
+        "text": ""
+    },
+    {
         "type": "REQUEST_SERVER_STATS"
+    },
+    {
+        "type": "ROOM_ADD_OWNER",
+        "channelId": 0,
+        "name": ""
+    },
+    {
+        "type": "ROOM_CLONE_GAME",
+        "channelId": 0,
+        "gameChannelId": 0
+    },
+    {
+        "type": "ROOM_DESC_REQUEST",
+        "channelId": 0
     },
     {
         "type": "ROOM_EDIT",
@@ -72,12 +158,13 @@
         "globalOnly": false
     },
     {
-        "type": "ROOM_DESC_REQUEST",
-        "channelId": 0
-    },
-    {
         "type": "ROOM_NAMES_REQUEST",
         "rooms": []
+    },
+    {
+        "type": "ROOM_REMOVE_OWNER",
+        "channelId": 0,
+        "name": ""
     },
     {
         "type": "SET_PASSWORD",

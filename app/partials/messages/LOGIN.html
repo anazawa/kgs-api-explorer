@@ -1,19 +1,4 @@
-<div class="form-group">
-  <label for="name">Name</label>
-  <input
-    class="form-control"
-    id="name"
-    name="name"
-    type="text"
-    ng-model="message.name"
-    required>
-</div>
-
-<div
-  class="alert"
-  ng-show="form.$submitted && form.name.$error.required">
-  Name can't be blank
-</div>
+<ng-include src="'partials/messages/fields/user-name.html'"></ng-include>
 
 <div class="form-group">
   <label for="password">Password</label>

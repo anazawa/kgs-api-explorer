@@ -41,5 +41,16 @@ directive("channelIdList", function () {
             });
         }
     };
+}).
+directive("userName", function () {
+    return {
+        require: "ngModel",
+        link: function (scope, elm, attrs, ctrl) {
+            ctrl.$validators.userName = function (modelValue) {
+                return ctrl.$isEmpty(modelValue) ||
+                       /^[a-zA-Z][a-zA-Z0-9]{0,9}$/.test(modelValue);
+            };
+        }
+    };
 });
 

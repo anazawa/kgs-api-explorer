@@ -1,0 +1,25 @@
+<div class="form-group">
+  <label for="name">Name</label>
+  <input
+    class="form-control"
+    id="name"
+    name="name"
+    type="text"
+    ng-model="message.name"
+    user-name
+    required>
+</div>
+
+<div
+  class="alert"
+  ng-show="form.$submitted && form.name.$error.required">
+  Name can't be blank
+</div>
+
+<div
+  class="alert"
+  ng-show="form.$submitted && form.name.$error.userName">
+  Name must contain only English letters and digits, must start with a letter,
+  and must be 1 to 10 characters long.
+</div>
+

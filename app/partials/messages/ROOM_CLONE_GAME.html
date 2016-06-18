@@ -1,0 +1,26 @@
+<ng-include src="'partials/messages/fields/channel-id.html'"></ng-include>
+
+<div class="form-group">
+  <label for="game-channel-id">Game channel ID</label>
+  <input
+    class="form-control"
+    id="game-channel-id"
+    name="game-channel-id"
+    type="number"
+    ng-model="message.gameChannelId"
+    channel-id
+    required>
+</div>
+
+<div
+  class="alert"
+  ng-show="form.$submitted && form.gameChannelId.$error.required">
+  Game channel ID can't be blank
+</div>
+
+<div
+  class="alert"
+  ng-show="form.$submitted && (form.gameChannelId.$error.number || form.gameChannelId.$error.channelId)">
+  Game channel ID must be a natural number
+</div>
+

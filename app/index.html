@@ -112,7 +112,7 @@
           Channels
         </h3>
         <p>
-          List of channels you have subscribed to.
+          List of channels you have joined.
         </p>
         <ul class="list-unstyled">
           <li ng-repeat="channel in channels | orderBy: ['type', 'id'] track by $index">
@@ -136,13 +136,13 @@
           </p>
           <form ng-submit="export()">
             <div class="form-group">
-              <label for="indent">Indent</label>
+              <label for="indent">Indentation</label>
               <select
                 id="indent"
                 class="form-control"
                 ng-model="indent">
                 <option value="tab">Tab</option>
-                <option value="1">1 spaces</option>
+                <option value="1">1 space</option>
                 <option value="2">2 spaces</option>
                 <option value="3">3 spaces</option>
                 <option value="4">4 spaces</option>

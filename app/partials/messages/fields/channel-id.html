@@ -1,8 +1,8 @@
 <div class="form-group">
-  <label for="channelId">Channel ID</label>
+  <label for="channel-id">Channel ID</label>
   <input
     class="form-control"
-    id="channelId"
+    id="channel-id"
     name="channelId"
     type="number"
     ng-model="message.channelId"
@@ -21,5 +21,4 @@
   ng-show="form.$submitted && (form.channelId.$error.number || form.channelId.$error.channelId)">
   Channel ID must be a natural number
 </div>
-
 
