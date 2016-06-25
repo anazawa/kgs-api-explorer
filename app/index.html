@@ -18,32 +18,8 @@
 <body>
   <div class="container">
 
-    <div class="column-center" ng-controller="downstreamCtrl">
-      <header class="downstream-header">
-        <h2 class="text-downstream">
-          <i class="fa fa-refresh" ng-class="{'fa-spin': isPolling}"></i>
-          Downstream
-        </h2>
-        <div class="alert" ng-show="error">{{error}}</div>
-        <div class="form-group">
-          <label for="query" class="text-downstream">
-            <i class="fa fa-search"></i>
-            Search messages
-          </label>
-          <input
-            id="query"
-            class="form-control"
-            type="text"
-            ng-model="query">
-        </div>
-      </header>
-      <div class="downstream-messages">
-        <ul class="list-unstyled">
-          <li ng-repeat="message in messages | filter: { body: { $: query } } | orderBy: '-date' track by $index">
-            <json-formatter open="1" json="message.body"></json-formatter>
-          </li>
-        </ul>
-      </div>
+    <div class="column-center">
+      <ng-include src="'partials/downstream.html'"></ng-include>
     </div><!-- /.column-center -->
 
     <div class="column-left">
@@ -70,103 +46,12 @@
           </li>
         </ul>
       </header>
-      <div class="upstream" ng-controller="upstreamCtrl">
-        <h2 class="text-upstream">
-          <i class="fa fa-arrow-up"></i>
-          Upstream
-        </h2>
-        <div class="alert" ng-show="error">{{error}}</div>
-        <div class="upstream-message-preview">
-          <json-formatter open="2" json="message"></json-formatter>
-        </div>
-        <form name="form" ng-submit="send(form)" novalidate>
-          <div class="form-group">
-            <label for="type">Type</label>
-            <select
-              id="type"
-              class="form-control"
-              ng-options="type for type in availableTypes"
-              ng-model="message.type"
-              ng-change="reset(form)"></select>
-          </div>
-          <ng-include ng-if="message" src="'partials/messages/'+message.type+'.html'"></ng-include>
-          <input class="btn" type="submit" value="Send" ng-disabled="isSending">
-        </form>
-        <div class="upstream-messages">
-          <h3 class="text-upstream">
-            <i class="fa fa-history"></i>
-            History
-          </h3>
-          <ul class="list-unstyled" ng-show="history.length">
-            <li ng-repeat="message in history | filter: query | orderBy: '-date' track by $index">
-              <json-formatter open="1" json="message.body"></json-formatter>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div><!-- /.column-left -->
+      <ng-include src="'partials/upstream.html'"></ng-include>
+   </div><!-- /.column-left -->
 
     <div class="column-right">
-      <div class="downstream-channels" ng-controller="channelsCtrl">
-        <h3 class="text-downstream">
-          Channels
-        </h3>
-        <p>
-          List of channels you have joined.
-        </p>
-        <ul class="list-unstyled">
-          <li ng-repeat="channel in channels | orderBy: ['type', 'id'] track by $index">
-            <span class="text-downstream-muted">
-              [{{channel.type | lowercase}}]
-            </span>
-            {{channel.id}}
-          </li>
-        </ul>
-      </div>
-      <div class="exporter" ng-controller="exporterCtrl">
-        <div ng-show="isAvailable">
-          <h2>
-            Export Messages
-          </h2>
-          <p>
-            Generates a JSON file that includes the API endpoint,
-            upstream/downstream messages and errors caught while communicating
-            with the KGS go server. Helps you report a bug or read KGS messages
-            later.
-          </p>
-          <form ng-submit="export()">
-            <div class="form-group">
-              <label for="indent">Indentation</label>
-              <select
-                id="indent"
-                class="form-control"
-                ng-model="indent">
-                <option value="tab">Tab</option>
-                <option value="1">1 space</option>
-                <option value="2">2 spaces</option>
-                <option value="3">3 spaces</option>
-                <option value="4">4 spaces</option>
-                <option value="5">5 spaces</option>
-                <option value="6">6 spaces</option>
-                <option value="7">7 spaces</option>
-                <option value="8">8 spaces</option>
-                <option value="0">None</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="hide-password">
-                <input
-                  type="checkbox"
-                  id="hide-password"
-                  class="form-control"
-                  ng-model="hidePassword">
-                Hide password
-              </label>
-            </div>
-            <input class="btn" type="submit" value="Export">
-          </form>
-        </div>
-      </div>
+      <ng-include src="'partials/downstream-channels.html'"></ng-include>
+      <ng-include src="'partials/exporter.html'"></ng-include>
    </div><!-- /.column-right -->
 
   </div><!-- /.container -->

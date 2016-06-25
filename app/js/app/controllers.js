@@ -78,21 +78,45 @@ controller("upstreamCtrl", function ($scope, $http, kgsPoller) {
             return key !== "LOGIN";
         }));
     }).
-    on("LOGOUT", function () {
+    on("logout", function () {
         reset(["LOGIN"]);
     });
 }).
-controller("downstreamCtrl", function ($scope, kgsPoller) {
-    $scope.messages = kgsPoller.downstreamMessages();
+controller("downstreamCtrl", function ($scope, kgsPoller, page, $filter) {
+    angular.extend($scope, {
+        entries: [],
+        entriesPerPage: 5,
+        currentPage: 1
+    }, page);
+
     $scope.isPolling = false;
     $scope.error = "";
 
+    $scope.updateMessages = function (currentPage) {
+        var entries = kgsPoller.downstreamMessages();
+        if (this.query) {
+            entries = $filter("filter")(entries, {
+                body: {
+                    $: this.query
+                }
+            });
+        }
+
+        this.entries.length = 0;
+        this.entries.push.apply(this.entries, entries);
+
+        this.currentPage = currentPage || this.currentPage;
+    };
+
     kgsPoller.
-    on("HELLO", function () {
+    on("startPolling", function () {
         $scope.isPolling = true;
     }).
-    on("LOGOUT", function () {
+    on("stopPolling", function () {
         $scope.isPolling = false;
+    }).
+    on("message", function () {
+        $scope.updateMessages();
     }).
     on("error", function (error) {
         if (error.type === "kgsPollerPollingError") {
@@ -102,7 +126,7 @@ controller("downstreamCtrl", function ($scope, kgsPoller) {
 }).
 controller("channelsCtrl", function ($scope, kgsPoller) {
     kgsPoller.
-    on("LOGIN_SUCCESS", function () {
+    on("login", function () {
         $scope.channels = [];
     }).
     on("message", function (message) {
@@ -118,7 +142,7 @@ controller("channelsCtrl", function ($scope, kgsPoller) {
             return channel.id === message.channelId;
         }), 1);
     }).
-    on("LOGOUT", function () {
+    on("logout", function () {
         $scope.channels = null;
     });
 }).

@@ -18,6 +18,22 @@
     margin-top: 0;
 }
 
+.pager {
+    text-align: center;
+}
+
+.pager-item {
+    cursor: pointer;
+    color: #097054;
+    padding: 0.1em 0.2em;
+}
+
+.pager-item:hover,
+.pager-item:focus {
+    color: #0d9f77;
+
+}
+
 /* Upstream */
 
 .text-upstream {

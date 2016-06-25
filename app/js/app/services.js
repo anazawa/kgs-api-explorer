@@ -4,7 +4,8 @@ angular.module("kgsApiExplorer.services", [
 ]).
 factory("kgsPoller", function ($log, $rootScope, $q) {
     var that = kgsPoller({
-        logger: $log
+        logger: $log,
+        url: "http://metakgs.org/api/access-201606110333"
     });
 
     that.upstreamMessages = function () {
@@ -19,9 +20,11 @@ factory("kgsPoller", function ($log, $rootScope, $q) {
 
     that.emit = (function (superEmit) {
         return function () {
-            var ret = superEmit.apply(this, arguments);
-            $rootScope.$apply();
-            return ret;
+            var listenerCount = superEmit.apply(this, arguments);
+            if (listenerCount) {
+                $rootScope.$apply();
+            }
+            return listenerCount;
         };
     }(that.emit));
 
@@ -53,6 +56,46 @@ factory("kgsPoller", function ($log, $rootScope, $q) {
             body: message
         });
     });
+
+    that.on("error", function (error) {
+        this.logger().error(error);
+    });
+
+    return that;
+}).
+service("page", function () {
+    var that = {};
+
+    that.totalEntries = function () {
+        return this.entries.length;
+    };
+
+    that.firstPage = function () {
+        return 1;
+    };
+
+    that.lastPage = function () {
+        return Math.ceil(this.totalEntries()/this.entriesPerPage) || 1;
+    };
+
+    that.previousPage = function () {
+        return this.currentPage > 1 ? this.currentPage-1 : null;
+    };
+
+    that.nextPage = function () {
+        return this.currentPage < this.lastPage() ? this.currentPage+1 : null;
+    };
+
+    that.first = function () {
+        return this.totalEntries() && (this.currentPage-1)*this.entriesPerPage;
+    };
+
+    that.last = function () {
+        if (this.currentPage === this.lastPage()) {
+            return Math.max(0, this.totalEntries()-1);
+        }
+        return this.currentPage*this.entriesPerPage-1;
+    };
 
     return that;
 });
