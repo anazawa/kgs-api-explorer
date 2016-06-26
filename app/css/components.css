@@ -18,26 +18,34 @@
     margin-top: 0;
 }
 
+/* Pager */
+
 .pager {
     text-align: center;
 }
 
 .pager-item {
-    cursor: pointer;
-    color: #097054;
     padding: 0.1em 0.2em;
 }
 
-.pager-item:hover,
-.pager-item:focus {
-    color: #0d9f77;
-
+.pager-btn {
+    cursor: pointer;
 }
 
 /* Upstream */
 
 .text-upstream {
     color: #6599ff;
+}
+
+.upstream-pager-btn {
+    cursor: pointer;
+    color: #6599ff;
+}
+
+.upstream-pager-btn:hover,
+.upstream-pager-btn:focus {
+    color: #98bbff;
 }
 
 .upstream {
@@ -54,6 +62,7 @@
 }
 
 .upstream-messages {
+    padding-left: 2em;
     padding-bottom: 1em;
 }
 
@@ -69,6 +78,16 @@
 
 .text-downstream-muted {
     color: #0da67d;
+}
+
+.downstream-pager-btn {
+    cursor: pointer;
+    color: #097054;
+}
+
+.downstream-pager-btn:hover,
+.downstream-pager-btn:focus {
+    color: #0d9f77;
 }
 
 .downstream-header {

@@ -1,4 +1,6 @@
-<div class="upstream" ng-controller="upstreamCtrl">
+<div
+  class="upstream"
+  ng-controller="upstreamCtrl">
   <h2 class="text-upstream">
     <i class="fa fa-arrow-up"></i>
     Upstream
@@ -20,16 +22,5 @@
     <ng-include ng-if="message" src="'partials/messages/'+message.type+'.html'"></ng-include>
     <input class="btn" type="submit" value="Send" ng-disabled="isSending">
   </form>
-  <div class="upstream-messages">
-    <h3 class="text-upstream">
-      <i class="fa fa-history"></i>
-      History
-    </h3>
-    <ul class="list-unstyled" ng-show="history.length">
-      <li ng-repeat="message in history | orderBy: '-date' track by $index">
-        <json-formatter open="1" json="message.body"></json-formatter>
-      </li>
-    </ul>
-  </div>
 </div>
  

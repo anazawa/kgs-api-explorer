@@ -1,0 +1,37 @@
+<div
+  class="upstream-messages"
+  ng-controller="upstreamMessagesCtrl">
+  <h3 class="text-upstream">
+    <i class="fa fa-history"></i>
+    History
+  </h3>
+  <ul class="list-unstyled" ng-show="entries.length">
+    <li ng-repeat="message in entries | limitTo: entriesPerPage:first() track by $index">
+      <json-formatter open="1" json="message.body"></json-formatter>
+    </li>
+  </ul>
+  <nav>
+    <ul class="list-inline pager">
+      <li
+        class="pager-item upstream-pager-btn"
+        ng-show="previousPage()"
+        ng-click="currentPage=previousPage()">
+        <i class="fa fa-angle-left"></i>
+        Previous
+      </li>
+      <li
+        class="pager-item"
+        ng-show="lastPage() > 1">
+        Page {{currentPage}}/{{lastPage()}}
+      </li>
+      <li
+        class="pager-item upstream-pager-btn"
+        ng-show="nextPage()"
+        ng-click="currentPage=nextPage()">
+        Next
+        <i class="fa fa-angle-right"></i>
+      </li>
+    </ul>
+  </nav>
+</div>
+

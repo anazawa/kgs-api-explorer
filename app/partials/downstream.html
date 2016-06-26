@@ -27,14 +27,14 @@
     <nav>
       <ul class="list-inline pager">
         <li
-          class="pager-item"
+          class="pager-item downstream-pager-btn"
           ng-show="previousPage() && previousPage() != firstPage()"
           ng-click="currentPage=firstPage()">
           <i class="fa fa-angle-double-left"></i>
           First
         </li>
         <li
-          class="pager-item"
+          class="pager-item downstream-pager-btn"
           ng-show="previousPage()"
           ng-click="currentPage=previousPage()">
           <i class="fa fa-angle-left"></i>
@@ -42,13 +42,18 @@
         </li>
         <li
           class="pager-item"
+          ng-show="lastPage() > 1">
+          Page {{currentPage}}/{{lastPage()}}
+        </li>
+        <li
+          class="pager-item downstream-pager-btn"
           ng-show="nextPage()"
           ng-click="currentPage=nextPage()">
           Next
           <i class="fa fa-angle-right"></i>
         </li>
         <li
-          class="pager-item"
+          class="pager-item downstream-pager-btn"
           ng-show="nextPage() && nextPage() != lastPage()"
           ng-click="currentPage=lastPage()">
           Last

@@ -43,7 +43,7 @@ controller("upstreamCtrl", function ($scope, $http, kgsPoller) {
         $scope.LOCALES = response.data;
     });
 
-    $scope.history = kgsPoller.upstreamMessages();
+    //$scope.history = kgsPoller.upstreamMessages();
     $scope.isSending = false;
     $scope.error = "";
     $scope.authLevel = null;
@@ -82,10 +82,17 @@ controller("upstreamCtrl", function ($scope, $http, kgsPoller) {
         reset(["LOGIN"]);
     });
 }).
+controller("upstreamMessagesCtrl", function ($scope, kgsPoller, page) {
+    angular.extend($scope, {
+        entries: kgsPoller.upstreamMessages(),
+        entriesPerPage: 5,
+        currentPage: 1
+    }, page);
+}).
 controller("downstreamCtrl", function ($scope, kgsPoller, page, $filter) {
     angular.extend($scope, {
         entries: [],
-        entriesPerPage: 5,
+        entriesPerPage: 10,
         currentPage: 1
     }, page);
 
