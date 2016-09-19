@@ -70,6 +70,29 @@
     margin-bottom: 1em;
 }
 
+.upstream-editor-list {
+    padding-left: 0;
+    list-style: none;
+}
+
+.upstream-editor-list li {
+    cursor: pointer;
+    color: #6599ff;
+    display: inline-block;
+    margin-right: 0.5em;
+    padding: 0.2em 0.4em;
+    border-radius: 0.3em;
+}
+
+.upstream-editor-list li.active {
+    background-color: #6599ff;
+    color: #fff;
+}
+
+.upstream-text-editor {
+    font-family: monospace;
+}
+
 /* Downstream */
 
 .text-downstream {

@@ -1,0 +1,74 @@
+<ng-include src="'partials/upstream-messages/fields/callback-key.html'"></ng-include>
+
+<div class="form-group">
+  <label for="name">Name</label>
+  <input
+    class="form-control"
+    id="name"
+    name="name"
+    type="text"
+    ng-model="message.name"
+    ng-maxlength="50">
+</div>
+
+<div
+  class="alert"
+  ng-show="form.$submitted && form.name.$error.maxLength">
+  Name is too long (maximum is 50 characters)
+</div>
+
+<div class="form-group">
+  <label for="description">Description</label>
+  <textarea
+    class="form-control"
+    id="description"
+    name="description"
+    ng-model="message.description"
+    ng-maxlength="1000"></textarea>
+</div>
+
+<div
+  class="alert"
+  ng-show="form.$submitted && form.description.$error.maxLength">
+  Description is too long (maximum is 1500 characters)
+</div>
+
+<ng-include src="'partials/upstream-messages/fields/category.html'"></ng-include>
+<ng-include src="'partials/upstream-messages/fields/locale.html'"></ng-include>
+
+<div class="form-group">
+  <label for="private">
+    <input
+      type="checkbox"
+      id="private"
+      class="form-control"
+      name="private"
+      ng-model="message.private">
+    Private
+  </label>
+</div>
+
+<div class="form-group">
+  <label for="tourn-only">
+    <input
+      type="checkbox"
+      id="tourn-only"
+      class="form-control"
+      name="tournOnly"
+      ng-model="message.tournOnly">
+    Only tournament games
+  </label>
+</div>
+
+<div class="form-group">
+  <label for="global-only">
+    <input
+      type="checkbox"
+      id="global-only"
+      class="form-control"
+      name="globalOnly"
+      ng-model="message.globalOnly">
+    Global games only
+  </label>
+</div>
+

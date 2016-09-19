@@ -1,0 +1,10 @@
+<div class="form-group">
+  <label for="locale">Locale</label>
+  <select
+    id="locale"
+    class="form-control"
+    name="locale"
+    ng-options="lc.id as lc.language+' ('+lc.country+')' for lc in LOCALES | orderBy:'language'"
+    ng-model="message.locale"></select>
+</div>
+

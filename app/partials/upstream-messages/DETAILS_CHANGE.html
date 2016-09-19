@@ -1,0 +1,84 @@
+<ng-include src="'partials/upstream-messages/fields/channel-id.html'"></ng-include>
+
+<div class="form-group">
+  <label for="personal-name">Real name</label>
+  <input
+    class="form-control"
+    id="personal-name"
+    name="personalName"
+    type="text"
+    ng-model="message.personalName"
+    ng-maxlength="50">
+</div>
+
+<div
+  class="alert"
+  ng-show="form.$submitted && form.name.$error.maxLength">
+  Real name is too long (maximum is 50 characters)
+</div>
+
+<div class="form-group">
+  <label for="personal-email">Email</label>
+  <input
+    class="form-control"
+    id="personal-email"
+    name="personalEmail"
+    type="email"
+    ng-model="message.personalEmail"
+    ng-maxlength="70">
+</div>
+
+<div
+  class="alert"
+  ng-show="form.$submitted && form.personalEmail.$error.maxLength">
+  Email is too long (maximum is 50 characters)
+</div>
+
+<div
+  class="alert"
+  ng-show="form.$submitted && form.name.$error.email">
+  Email is invalid
+</div>
+
+<div class="form-group">
+  <label for="personal-info">Notes</label>
+  <textarea
+    class="form-control"
+    id="personal-info"
+    name="personalInfo"
+    ng-model="message.personalInfo"
+    ng-maxlength="1500"></textarea>
+</div>
+
+<div
+  class="alert"
+  ng-show="form.$submitted && form.personalInfo.$error.maxLength">
+  Notes are too long (maximum is 1500 characters)
+</div>
+
+<div class="form-group">
+  <label for="email-wanted">
+    <input
+      type="checkbox"
+      id="email-wanted"
+      class="form-control"
+      name="emailWanted"
+      ng-model="message.emailWanted">
+    Send me the KGS Plus schedule
+  </label>
+</div>
+
+<div class="form-group">
+  <label for="email-private">
+    <input
+      class="form-control"
+      type="checkbox"
+      id="email-private"
+      name="emailPrivate"
+      ng-model="message.emailPrivate">
+    Hide my email from other users
+  </label>
+</div>
+
+<ng-include src="'partials/upstream-messages/fields/auth-level.html'"></ng-include>
+

@@ -42,6 +42,28 @@ directive("channelIdList", function () {
         }
     };
 }).
+directive("kgsMessage", function () {
+    return {
+        require: "ngModel",
+        link: function (scope, elm, attrs, ctrl) {
+            ctrl.$parsers.push(function (value) {
+                if (!angular.isUndefined(value)) {
+                    try {
+                        var message = JSON.parse(value);
+                        if (angular.isString(message.type)) {
+                            return message;
+                        }
+                    }
+                    catch (e) {
+                    }
+                }
+            });
+            ctrl.$formatters.push(function (value) {
+                return JSON.stringify(value, null, 2);
+            });
+        }
+    };
+}).
 directive("userName", function () {
     return {
         require: "ngModel",

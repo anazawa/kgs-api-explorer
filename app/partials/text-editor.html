@@ -1,0 +1,30 @@
+<div ng-controller="textEditorCtrl">
+  <form name="form" ng-submit="send(form)" novalidate>
+    <div class="form-group">
+      <label for="templates">Templates</label>
+      <select
+        id="templates"
+        class="form-control"
+        ng-options="name for name in TEMPLATES | keys"
+        ng-model="templateName"
+        ng-change="loadTemplate()"></select>
+    </div>
+    <div class="form-group">
+      <label for="message">Message</label>
+      <textarea
+        class="form-control upstream-text-editor"
+        rows="12"
+        name="message"
+        ng-model="message"
+        kgs-message></textarea>
+    </div>
+    <div
+      class="alert"
+      ng-show="form.$submitted && form.message.$error.parse">
+      Not a valid KGS message
+    </div>
+    <input class="btn" type="submit" value="Send" ng-disabled="isSending">
+    <input class="btn" type="button" value="Reset" ng-click="loadTemplate()">
+  </form>
+</div>
+

@@ -2,65 +2,62 @@
 
 angular.module("kgsApiExplorer.services", [
 ]).
-factory("kgsPoller", function ($log, $rootScope, $q) {
-    var that = kgsPoller({
-        logger: $log
-    });
+factory("client", function ($log, $rootScope, $q, $timeout) {
+    var self = kgsClient({ logger: $log }),
+        upstreamMessages = [],
+        downstreamMessages = [];
 
-    that.upstreamMessages = function () {
-        this._upstreamMessages = this._upstreamMessages || [];
-        return this._upstreamMessages;
+    self.upstreamMessages = function () {
+        return upstreamMessages;
     };
 
-    that.downstreamMessages = function () {
-        this._downstreamMessages = this._downstreamMessages || [];
-        return this._downstreamMessages;
+    self.downstreamMessages = function () {
+        return downstreamMessages;
     };
 
-    that.emit = (function (superEmit) {
+    self.emit = (function (superEmit) {
         return function () {
-            var listenerCount = superEmit.apply(this, arguments);
-            if (listenerCount) {
-                $rootScope.$apply();
-            }
-            return listenerCount;
+            var args = arguments;
+            $timeout(function () {
+                superEmit.apply(self, args);
+            });
         };
-    }(that.emit));
+    }(self.emit));
 
-    that.send = (function (superSend) {
+    self.send = (function (superSend) {
         return function (message) {
-            this.upstreamMessages().push({
+            upstreamMessages.push({
                 date: new Date(),
                 body: message
             });
-            var that = this;
             return $q(function (resolve, reject) {
-                superSend.call(that, message, resolve, reject);
+                superSend.call(self, message, resolve, reject);
             });
         };
-    }(that.send));
+    }(self.send));
 
-    that.toString = function (replacer, space) {
+    self.toString = function (replacer, space) {
         return JSON.stringify({
-            apiEndpoint: this.url(),
-            upstream: this.upstreamMessages(),
-            downstream: this.downstreamMessages(),
+            apiEndpoint: self.url(),
+            upstream: upstreamMessages,
+            downstream: downstreamMessages,
             errors: []
         }, replacer, space);
     };
 
-    that.on("message", function (message) {
-        this.downstreamMessages().push({
+    self.on("message", function (message) {
+        self.emit(message.type, message);
+        downstreamMessages.push({
             date: new Date(),
             body: message
         });
     });
 
-    that.on("error", function (error) {
-        this.logger().error(error);
+    self.on("error", function (error) {
+        self.logger().error(error);
     });
 
-    return that;
+    return self;
 }).
 service("page", function () {
     var that = {};

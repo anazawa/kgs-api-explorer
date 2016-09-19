@@ -46,19 +46,19 @@
           </li>
         </ul>
       </header>
-      <ng-include src="'partials/upstream.html'"></ng-include>
+      <ng-include src="'partials/upstream-message.html'"></ng-include>
       <ng-include src="'partials/upstream-messages.html'"></ng-include>
     </div><!-- /.column-left -->
 
     <div class="column-right">
-      <ng-include src="'partials/downstream-channels.html'"></ng-include>
+      <ng-include src="'partials/channels.html'"></ng-include>
       <ng-include src="'partials/exporter.html'"></ng-include>
     </div><!-- /.column-right -->
 
   </div><!-- /.container -->
 
   <script src="bower_components/file-saver/FileSaver.js"></script>
-  <script src="bower_components/kgspoller/index.js"></script>
+  <script src="bower_components/kgsclient/index.js"></script>
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/json-formatter/dist/json-formatter.js"></script>
   <script src="js/app.js"></script>

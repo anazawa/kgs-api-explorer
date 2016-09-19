@@ -1,0 +1,186 @@
+{
+    "ACCESS_LIST_REQUEST": {
+        "type": "ACCESS_LIST_REQUEST",
+        "channelId": 0
+    },
+    "AUTOMATCH_CANCEL": {
+        "type": "AUTOMATCH_CANCEL"
+    },
+    "AVATAR_REQUEST": {
+        "type": "AVATAR_REQUEST",
+        "name": ""
+    },
+    "CHALLENGE_DECLINE": {
+        "type": "CHALLENGE_DECLINE",
+        "channelId": 0,
+        "name": ""
+    },
+    "CHALLENGE_RETRY": {
+        "type": "CHALLENGE_RETRY",
+        "channelId": 0
+    },
+    "CHANNEL_ADD_ACCESS": {
+        "type": "CHANNEL_ADD_ACCESS",
+        "channelId": 0,
+        "name": ""
+    },
+    "CHANNEL_REMOVE_ACCESS": {
+        "type": "CHANNEL_REMOVE_ACCESS",
+        "channelId": 0,
+        "name": ""
+    },
+    "CHAT": {
+        "type": "CHAT",
+        "channelId": 0,
+        "text": ""
+    },
+    "CONVO_NO_CHATS": {
+        "type": "CONVO_NO_CHATS",
+        "channelId": 0
+    },
+    "CONVO_REQUEST": {
+        "type": "CONVO_REQUEST",
+        "callbackKey": 0,
+        "name": ""
+    },
+    "CREATE_ROOM_REQUEST": {
+        "type": "CREATE_ROOM_REQUEST",
+        "callbackKey": 0,
+        "name": "",
+        "description": "",
+        "category": "TEMPORARY",
+        "locale": "",
+        "private": false,
+        "tournOnly": false,
+        "globalOnly": false
+    },
+    "DETAILS_CHANGE": {
+        "type": "DETAILS_CHANGE",
+        "channelId": 0,
+        "personalName": "",
+        "personalEmail": "",
+        "personalInfo": "",
+        "emailWanted": false,
+        "emailPrivate": false,
+        "authLevel": "normal"
+    },
+    "DETAILS_JOIN_REQUEST": {
+        "type": "DETAILS_JOIN_REQUEST",
+        "name": ""
+    },
+    "DETAILS_RANK_GRAPH_REQUEST": {
+        "type": "DETAILS_RANK_GRAPH_REQUEST",
+        "channelId": 0
+    },
+    "FETCH_TAGS": {
+        "type": "FETCH_TAGS"
+    },
+    "GAME_RESIGN": {
+        "type": "GAME_RESIGN",
+        "channelId": 0
+    },
+    "GAME_START_REVIEW": {
+        "type": "GAME_START_REVIEW",
+        "channelId": 0
+    },
+    "GAME_TIME_ADD": {
+        "type": "GAME_TIME_ADD",
+        "role": "black",
+        "time": 0
+    },
+    "GAME_UNDO_ACCEPT": {
+        "type": "GAME_UNDO_ACCEPT",
+        "channelId": 0
+    },
+    "GAME_UNDO_REQUEST": {
+        "type": "GAME_UNDO_REQUEST",
+        "channelId": 0
+    },
+    "GLOBAL_LIST_JOIN_REQUEST": {
+        "type": "GLOBAL_LIST_JOIN_REQUEST",
+        "list": "CHALLENGES"
+    },
+    "IDLE_ON": {
+        "type": "IDLE_ON"
+    },
+    "JOIN_ARCHIVE_REQUEST": {
+        "type": "JOIN_ARCHIVE_REQUEST",
+        "name": ""
+    },
+    "JOIN_REQUEST": {
+        "type": "JOIN_REQUEST",
+        "channelId": 0
+    },
+    "JOIN_TAG_ARCHIVE_REQUEST": {
+        "type": "JOIN_TAG_ARCHIVE_REQUEST",
+        "name": ""
+    },
+    "LOGIN": {
+        "type": "LOGIN",
+        "name": "",
+        "password": "",
+        "locale": "en_US"
+    },
+    "LOGOUT": {
+        "type": "LOGOUT"
+    },
+    "MESSAGE_CREATE": {
+        "type": "MESSAGE_CREATE",
+        "callbackKey": 0,
+        "name": "",
+        "text": ""
+    },
+    "REQUEST_SERVER_STATS": {
+        "type": "REQUEST_SERVER_STATS"
+    },
+    "ROOM_ADD_OWNER": {
+        "type": "ROOM_ADD_OWNER",
+        "channelId": 0,
+        "name": ""
+    },
+    "ROOM_CLONE_GAME": {
+        "type": "ROOM_CLONE_GAME",
+        "channelId": 0,
+        "gameChannelId": 0
+    },
+    "ROOM_DESC_REQUEST": {
+        "type": "ROOM_DESC_REQUEST",
+        "channelId": 0
+    },
+    "ROOM_EDIT": {
+        "type": "ROOM_EDIT",
+        "name": "",
+        "description": "",
+        "category": "TEMPORARY",
+        "locale": "",
+        "private": false,
+        "tournOnly": false,
+        "globalOnly": false
+    },
+    "ROOM_NAMES_REQUEST": {
+        "type": "ROOM_NAMES_REQUEST",
+        "rooms": []
+    },
+    "ROOM_REMOVE_OWNER": {
+        "type": "ROOM_REMOVE_OWNER",
+        "channelId": 0,
+        "name": ""
+    },
+    "SET_PASSWORD": {
+        "type": "SET_PASSWORD",
+        "name": "",
+        "password": ""
+    },
+    "SYNC_REQUEST": {
+        "type": "SYNC_REQUEST",
+        "callbackKey": 0
+    },
+    "UNJOIN_REQUEST": {
+        "type": "UNJOIN_REQUEST",
+        "channelId": 0
+    },
+    "WAKE_UP": {
+        "type": "WAKE_UP"
+    }
+}
+

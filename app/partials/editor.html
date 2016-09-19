@@ -1,0 +1,19 @@
+<div ng-controller="editorCtrl">
+  <div class="upstream-message-preview">
+    <json-formatter open="2" json="message"></json-formatter>
+  </div>
+  <form name="form" ng-submit="send(form)" novalidate>
+    <div class="form-group">
+      <label for="type">Type</label>
+      <select
+        id="type"
+        class="form-control"
+        ng-options="type for type in UPSTREAM_MESSAGES | keys"
+        ng-model="messageType"
+        ng-change="reset(form)"></select>
+    </div>
+    <ng-include src="'partials/upstream-messages/'+messageType+'.html'"></ng-include>
+    <input class="btn" type="submit" value="Send" ng-disabled="isSending">
+  </form>
+</div>
+
