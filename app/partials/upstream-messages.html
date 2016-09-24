@@ -5,15 +5,26 @@
     <i class="fa fa-history"></i>
     History
   </h3>
-  <ul class="list-unstyled" ng-show="entries.length">
-    <li ng-repeat="message in entries | limitTo: entriesPerPage:first() track by $index">
-      <json-formatter open="1" json="message.body"></json-formatter>
-    </li>
-  </ul>
+  <div ng-repeat="message in entries | limitTo: entriesPerPage:first() track by $index">
+    <div class="message">
+      <div class="message-type text-upstream">
+        {{message.body.type}}
+        <a
+          class="link-upstream"
+          target="_blank"
+          ng-href="https://metakgs.org/apps/json-client/upstream.html#{{message.body.type}}">
+          <i class="fa fa-external-link"></i>
+        </a>
+      </div>
+      <div class="message-body">
+        <json-formatter open="1" json="message.body"></json-formatter>
+      </div>
+    </div>
+  </div>
   <nav>
     <ul class="list-inline pager">
       <li
-        class="pager-item upstream-pager-btn"
+        class="pager-item pager-btn"
         ng-show="previousPage()"
         ng-click="currentPage=previousPage()">
         <i class="fa fa-angle-left"></i>
@@ -25,7 +36,7 @@
         Page {{currentPage}}/{{lastPage()}}
       </li>
       <li
-        class="pager-item upstream-pager-btn"
+        class="pager-item pager-btn"
         ng-show="nextPage()"
         ng-click="currentPage=nextPage()">
         Next

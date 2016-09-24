@@ -29,7 +29,26 @@
 }
 
 .pager-btn {
+    color: #e68a00;
     cursor: pointer;
+}
+
+.pager-btn:hover,
+.pager-btn:focus {
+    color: #b36b00;
+}
+
+/* Message */
+
+.message {
+    margin-bottom: 1em;
+}
+
+.message-type {
+    margin-bottom: 0.5em;
+}
+
+.message-body {
 }
 
 /* Upstream */
@@ -38,13 +57,12 @@
     color: #6599ff;
 }
 
-.upstream-pager-btn {
-    cursor: pointer;
+.link-upstream {
     color: #6599ff;
 }
 
-.upstream-pager-btn:hover,
-.upstream-pager-btn:focus {
+.link-upstream:hover,
+.link-upstream:focus {
     color: #98bbff;
 }
 
@@ -103,13 +121,12 @@
     color: #0da67d;
 }
 
-.downstream-pager-btn {
-    cursor: pointer;
+.link-downstream {
     color: #097054;
 }
 
-.downstream-pager-btn:hover,
-.downstream-pager-btn:focus {
+.link-downstream:hover,
+.link-downstream:focus {
     color: #0d9f77;
 }
 
