@@ -36,6 +36,7 @@
 .pager-btn:hover,
 .pager-btn:focus {
     color: #b36b00;
+    text-decoration: underline;
 }
 
 /* Message */
@@ -79,15 +80,6 @@
     border-radius: 0.5em;
 }
 
-.upstream-messages {
-    padding-left: 2em;
-    padding-bottom: 1em;
-}
-
-.upstream-messages li {
-    margin-bottom: 1em;
-}
-
 .upstream-editor-list {
     padding-left: 0;
     list-style: none;
@@ -109,6 +101,17 @@
 
 .upstream-text-editor {
     font-family: monospace;
+}
+
+/* History */
+
+.history {
+    padding-left: 2em;
+    padding-bottom: 1em;
+}
+
+.history li {
+    margin-bottom: 1em;
 }
 
 /* Downstream */

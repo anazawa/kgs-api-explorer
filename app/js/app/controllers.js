@@ -67,7 +67,7 @@ controller("textEditorCtrl", function ($scope, $http) {
         this.message = angular.copy(this.TEMPLATES[this.templateName]);
     };
 }).
-controller("upstreamMessagesCtrl", function ($scope, client, page) {
+controller("historyCtrl", function ($scope, client, page) {
     angular.extend($scope, {
         entries: client.upstreamMessages(),
         entriesPerPage: 5,
