@@ -67,25 +67,27 @@ controller("textEditorCtrl", function ($scope, $http) {
         this.message = angular.copy(this.TEMPLATES[this.templateName]);
     };
 }).
-controller("historyCtrl", function ($scope, client, page) {
-    angular.extend($scope, {
-        entries: client.upstreamMessages(),
-        entriesPerPage: 5,
-        currentPage: 1
-    }, page);
-}).
 controller("downstreamCtrl", function ($scope, client, page, $filter) {
     angular.extend($scope, {
         entries: [],
-        entriesPerPage: 10,
+        entriesPerPage: 5,
         currentPage: 1
     }, page);
 
     $scope.isPolling = false;
     $scope.error = "";
 
+    $scope.setCurrentPage = function (page) {
+        if (page === -1) {
+            $scope.currentPage = $scope.lastPage();
+        }
+        else if (page) {
+            $scope.currentPage = page;
+        }
+    };
+
     $scope.updateMessages = function (currentPage) {
-        var entries = client.downstreamMessages();
+        var entries = client.messages();
         if (this.query) {
             entries = $filter("filter")(entries, {
                 body: {
@@ -96,8 +98,6 @@ controller("downstreamCtrl", function ($scope, client, page, $filter) {
 
         this.entries.length = 0;
         this.entries.push.apply(this.entries, entries);
-
-        this.currentPage = currentPage || this.currentPage;
     };
 
     client.
@@ -110,7 +110,11 @@ controller("downstreamCtrl", function ($scope, client, page, $filter) {
         }
     }).
     on("message", function () {
+        var page =
+            $scope.currentPage === $scope.lastPage()
+                ? -1 : $scope.currentPage;
         $scope.updateMessages();
+        $scope.setCurrentPage(page);
     }).
     on("xhrError", function (xhr) {
         $scope.error = xhr.status+" "+xhr.statusText;

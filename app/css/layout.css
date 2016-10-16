@@ -1,24 +1,16 @@
 .container {
-    /*padding: 1em 2em;*/
     -webkit-box-sizing: border-box;
        -moz-box-sizing: border-box;
             box-sizing: border-box;
-    /*max-height: 100%;*/
 }
 
 .column-left {
     float: left;
-    width: 30%;
+    width: 40%;
 }
 
 .column-right {
     float: right;
-    width: 30%;
-}
-
-.column-center {
-    display: inline-block;
-    width: 40%;
-    max-height: 100vh;
+    width: 60%;
 }
 

@@ -18,10 +18,6 @@
 <body>
   <div class="container">
 
-    <div class="column-center">
-      <ng-include src="'partials/downstream.html'"></ng-include>
-    </div><!-- /.column-center -->
-
     <div class="column-left">
       <header class="page-header" ng-controller="headerCtrl">
         <h1>
@@ -47,13 +43,13 @@
         </ul>
       </header>
       <ng-include src="'partials/upstream-message.html'"></ng-include>
-      <ng-include src="'partials/history.html'"></ng-include>
+      <ng-include src="'partials/channels.html'"></ng-include>
+      <ng-include src="'partials/exporter.html'"></ng-include>
     </div><!-- /.column-left -->
 
     <div class="column-right">
-      <ng-include src="'partials/channels.html'"></ng-include>
-      <ng-include src="'partials/exporter.html'"></ng-include>
-    </div><!-- /.column-right -->
+      <ng-include src="'partials/downstream.html'"></ng-include>
+    </div><!-- /.column-center -->
 
   </div><!-- /.container -->
 

@@ -4,15 +4,10 @@ angular.module("kgsApiExplorer.services", [
 ]).
 factory("client", function ($log, $rootScope, $q, $timeout) {
     var self = kgsClient({ logger: $log }),
-        upstreamMessages = [],
-        downstreamMessages = [];
+        messages = [];
 
-    self.upstreamMessages = function () {
-        return upstreamMessages;
-    };
-
-    self.downstreamMessages = function () {
-        return downstreamMessages;
+    self.messages = function () {
+        return messages;
     };
 
     self.emit = (function (superEmit) {
@@ -26,7 +21,8 @@ factory("client", function ($log, $rootScope, $q, $timeout) {
 
     self.send = (function (superSend) {
         return function (message) {
-            upstreamMessages.push({
+            messages.push({
+                type: "UPSTREAM",
                 date: new Date(),
                 body: message
             });
@@ -47,7 +43,8 @@ factory("client", function ($log, $rootScope, $q, $timeout) {
 
     self.on("message", function (message) {
         self.emit(message.type, message);
-        downstreamMessages.push({
+        messages.push({
+            type: "DOWNSTREAM",
             date: new Date(),
             body: message
         });

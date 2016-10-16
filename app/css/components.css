@@ -39,6 +39,13 @@
     text-decoration: underline;
 }
 
+.pager-btn.disabled,
+.pager-btn.disabled:hover,
+.pager-btn.disabled:focus {
+    color: #777;
+    cursor: not-allowed;
+}
+
 /* Message */
 
 .message {
@@ -47,9 +54,15 @@
 
 .message-type {
     margin-bottom: 0.5em;
+    font-weight: bold;
+}
+
+.message-date {
+    margin-bottom: 0.5em;
 }
 
 .message-body {
+    margin-bottom: 0.5em;
 }
 
 /* Upstream */
@@ -103,18 +116,13 @@
     font-family: monospace;
 }
 
-/* History */
+/* Downstream */
 
-.history {
-    padding-left: 2em;
+.downstream {
+    padding-left: 1em;
+    padding-right: 1em;
     padding-bottom: 1em;
 }
-
-.history li {
-    margin-bottom: 1em;
-}
-
-/* Downstream */
 
 .text-downstream {
     color: #097054;
@@ -135,6 +143,7 @@
 
 .downstream-header {
     padding-top: 2em;
+    margin-bottom: 1em;
 }
 
 .downstream-header h2 {
@@ -149,19 +158,22 @@
     margin-bottom: 1em;
 }
 
-.downstream-channels {
-    padding-top: 2em;
-    padding-right: 2em;
+/* Channels */
+
+.channels {
+    padding-left: 2em;
+    padding-bottom: 1em;
 }
 
-.downstream-channels h3 {
+.channels h3 {
     margin-top: 0;
 }
 
 /* Exporter */
 
 .exporter {
-    padding-right: 2em;
+    padding-left: 2em;
+    padding-bottom: 2em;
 }
 
 /* JSON Formatter */

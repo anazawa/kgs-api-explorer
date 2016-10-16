@@ -1,4 +1,4 @@
-<div ng-controller="downstreamCtrl">
+<div class="downstream" ng-controller="downstreamCtrl">
   <header class="downstream-header">
     <h2 class="text-downstream">
       <i class="fa fa-refresh" ng-class="{'fa-spin': isPolling}"></i>
@@ -18,10 +18,27 @@
         ng-change="updateMessages(1)">
     </div>
   </header>
+
   <div class="downstream-messages">
+
     <div ng-repeat="message in entries | limitTo: entriesPerPage:first() track by $index">
       <div class="message">
-        <div class="message-type text-downstream">
+        <div
+          class="message-type text-upstream"
+          ng-if="message.type === 'UPSTREAM'">
+          <i class="fa fa-arrow-up"></i>
+          {{message.body.type}}
+          <a
+            class="link-upstream"
+            target="_blank"
+            ng-href="https://metakgs.org/apps/json-client/upstream.html#{{message.body.type}}">
+            <i class="fa fa-external-link"></i>
+          </a>
+        </div>
+        <div
+          class="message-type text-downstream"
+          ng-if="message.type === 'DOWNSTREAM'">
+          <i class="fa fa-arrow-down"></i>
           {{message.body.type}}
           <a
             class="link-downstream"
@@ -30,48 +47,57 @@
             <i class="fa fa-external-link"></i>
           </a>
         </div>
+        <div class="message-date text-muted">
+          <i class="fa fa-clock-o"></i>
+          {{message.date | date:'medium'}}
+        </div>
         <div class="message-body">
           <json-formatter open="1" json="message.body"></json-formatter>
         </div>
       </div>
     </div>
+
     <nav>
       <ul class="list-inline pager">
         <li
           class="pager-item pager-btn"
-          ng-show="previousPage() && previousPage() != firstPage()"
-          ng-click="currentPage=firstPage()">
+          ng-class="{ disabled: !previousPage() }"
+          ng-click="setCurrentPage(firstPage())">
           <i class="fa fa-angle-double-left"></i>
           First
         </li>
         <li
           class="pager-item pager-btn"
-          ng-show="previousPage()"
-          ng-click="currentPage=previousPage()">
+          ng-class="{ disabled: !previousPage() }"
+          ng-click="setCurrentPage(previousPage())">
           <i class="fa fa-angle-left"></i>
           Previous
         </li>
         <li
-          class="pager-item"
-          ng-show="lastPage() > 1">
-          Page {{currentPage}}/{{lastPage()}}
+          class="pager-item">
+          Page
+          <select
+            ng-model="currentPage"
+            ng-options="page for page in [] | range:1:lastPage()"></select>
+          of {{lastPage()}}
         </li>
         <li
           class="pager-item pager-btn"
-          ng-show="nextPage()"
-          ng-click="currentPage=nextPage()">
+          ng-class="{ disabled: !nextPage() }"
+          ng-click="setCurrentPage(nextPage())">
           Next
           <i class="fa fa-angle-right"></i>
         </li>
         <li
           class="pager-item pager-btn"
-          ng-show="nextPage() && nextPage() != lastPage()"
-          ng-click="currentPage=lastPage()">
+          ng-class="{ disabled: !nextPage() }"
+          ng-click="setCurrentPage(lastPage())">
           Last
           <i class="fa fa-angle-double-right"></i>
         </li>
       </ul>
     </nav>
+
   </div>
 </div>
 
