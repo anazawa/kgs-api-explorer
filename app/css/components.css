@@ -93,12 +93,12 @@
     border-radius: 0.5em;
 }
 
-.upstream-editor-list {
+.editor-list {
     padding-left: 0;
     list-style: none;
 }
 
-.upstream-editor-list li {
+.editor-list li {
     cursor: pointer;
     color: #6599ff;
     display: inline-block;
@@ -107,7 +107,7 @@
     border-radius: 0.3em;
 }
 
-.upstream-editor-list li.active {
+.editor-list li.active {
     background-color: #6599ff;
     color: #fff;
 }
@@ -116,12 +116,24 @@
     font-family: monospace;
 }
 
+/* Documentation */
+
+.doc {
+    padding-left: 2em;
+    padding-right: 1em;
+    padding-bottom: 1em;
+}
+
+.doc iframe {
+    width: 100%;
+    height: 15em;
+}
+
 /* Downstream */
 
 .downstream {
     padding-left: 1em;
     padding-right: 1em;
-    padding-bottom: 1em;
 }
 
 .text-downstream {
@@ -151,7 +163,7 @@
 }
 
 .downstream-messages {
-    padding-bottom: 1em;
+    margin-bottom: 1em;
 }
 
 .downstream-messages li {

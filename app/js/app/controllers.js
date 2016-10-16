@@ -13,7 +13,7 @@ controller("headerCtrl", function ($scope) {
     ];
     $scope.message = messages[Math.floor(Math.random()*messages.length)];
 }).
-controller("upstreamMessageCtrl", function ($scope, $http, client) {
+controller("upstreamCtrl", function ($scope, $http, client) {
     $scope.isSending = false;
     $scope.useTextEditor = false;
     $scope.error = "";
@@ -70,7 +70,7 @@ controller("textEditorCtrl", function ($scope, $http) {
 controller("downstreamCtrl", function ($scope, client, page, $filter) {
     angular.extend($scope, {
         entries: [],
-        entriesPerPage: 5,
+        entriesPerPage: 10,
         currentPage: 1
     }, page);
 
@@ -118,30 +118,6 @@ controller("downstreamCtrl", function ($scope, client, page, $filter) {
     }).
     on("xhrError", function (xhr) {
         $scope.error = xhr.status+" "+xhr.statusText;
-    });
-}).
-controller("channelsCtrl", function ($scope, client) {
-    client.
-    on("stateChange", function (state) {
-        if (state === kgsClient.LOGGED_IN) {
-            $scope.channels = [];
-        }
-        else if (state === kgsClient.LOGGED_OUT) {
-            $scope.channels = null;
-        }
-    }).
-    on("message", function (message) {
-        if (/_JOIN$/.test(message.type)) {
-            $scope.channels.push({
-                id: message.channelId,
-                type: message.type.replace(/_JOIN/, "")
-            });
-        }
-    }).
-    on("UNJOIN", function (message) {
-        $scope.channels.splice($scope.channels.findIndex(function (channel) {
-            return channel.id === message.channelId;
-        }), 1);
     });
 }).
 controller("exporterCtrl", function ($scope, client) {

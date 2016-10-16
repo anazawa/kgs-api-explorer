@@ -1,12 +1,12 @@
 <div
   class="upstream"
-  ng-controller="upstreamMessageCtrl">
+  ng-controller="upstreamCtrl">
   <h2 class="text-upstream">
     <i class="fa fa-arrow-up"></i>
     Upstream
   </h2>
   <div class="alert" ng-show="error">{{error}}</div>
-  <ul class="upstream-editor-list">
+  <ul class="editor-list">
     <li
       ng-click="useTextEditor=false"
       ng-class="{ active: !useTextEditor }">
